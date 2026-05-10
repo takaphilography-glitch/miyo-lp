@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>サイト画像管理 - miyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script src="https://upload-widget.cloudinary.com/global/all.js" defer></script>
+<style>
+  :root{
+    --bg:        #f5f0e6;
+    --bg-deep:   #ece4d3;
+    --bg-paper:  #faf6ec;
+    --sakura:    #e8b4b8;
+    --sakura-deep:#d18a8f;
+    --sumi:      #2b2625;
+    --sumi-soft: #5a514f;
+    --gold:      #b8956a;
+    --gold-light:#d4b88a;
+    --line:      #d8cfb8;
+    --shadow:    rgba(43,38,37,.08);
+    --success:   #5a8a5e;
+    --danger:    #c25a55;
+
+    --serif: 'Shippori Mincho', 'Yu Mincho', '游明朝', YuMincho, serif;
+    --sans:  'Noto Sans JP', 'Hiragino Sans', sans-serif;
+    --italic:'Cormorant Garamond', serif;
+  }
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+  html, body{ background: var(--bg); color: var(--sumi); }
+  body{
+    font-family: var(--sans);
+    line-height: 1.7;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .container{ max-width: 1000px; margin: 0 auto; }
+
+  header.app-head{
+    background: var(--bg-paper);
+    padding: 22px 28px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  header.app-head h1{
+    font-family: var(--serif);
+    font-size: 20px;
+    letter-spacing: .2em;
+    font-weight: 600;
+  }
+  header.app-head h1::before{ content: '❀ '; color: var(--sakura-deep); }
+  header.app-head .meta{
+    font-size: 13px;
+    color: var(--sumi-soft);
+    display: flex; gap: 10px; align-items: center;
+  }
+
+  /* ボタン共通 */
+  .btn{
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 10px 20px;
+    background: var(--sumi);
+    color: var(--bg-paper);
+    border: none;
+    border-radius: 3px;
+    font-size: 13px;
+    letter-spacing: .1em;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: background .25s, opacity .2s;
+  }
+  .btn:hover{ background: var(--sakura-deep); }
+  .btn-primary{ background: var(--sakura-deep); }
+  .btn-primary:hover{ background: var(--sumi); }
+  .btn-ghost{
+    background: transparent;
+    color: var(--sumi);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover{ background: var(--bg-paper); }
+  .btn-danger{ background: var(--danger); }
+  .btn-danger:hover{ background: #a73e3a; }
+  .btn-sm{ padding: 6px 12px; font-size: 12px; }
+  .btn:disabled{ opacity: .5; cursor: not-allowed; }
+  .btn:disabled:hover{ background: var(--sumi); }
+
+  /* ログイン */
+  .login-box{
+    max-width: 400px;
+    margin: 80px auto;
+    background: var(--bg-paper);
+    padding: 40px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+  .login-box h2{
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: .15em;
+  }
+  .login-box .lead{
+    font-size: 12px;
+    color: var(--sumi-soft);
+    margin-bottom: 24px;
+    letter-spacing: .05em;
+  }
+  .login-box input{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 14px;
+    background: var(--bg);
+    margin-bottom: 16px;
+    font-family: var(--sans);
+  }
+  .login-box input:focus{ outline: none; border-color: var(--sakura-deep); }
+  .login-box .err{
+    color: var(--danger);
+    font-size: 12px;
+    margin-top: 12px;
+    min-height: 1em;
+  }
+
+  /* スロット */
+  .slots{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .slot{
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .slot.dirty{ border-color: var(--sakura-deep); }
+  .slot.dirty::before{
+    content: '未保存';
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--sakura-deep);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    letter-spacing: .05em;
+  }
+  .slot h2{
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: .15em;
+    margin-bottom: 4px;
+  }
+  .slot .desc{
+    font-size: 11px;
+    color: var(--sumi-soft);
+    margin-bottom: 14px;
+    letter-spacing: .05em;
+  }
+  .slot .preview{
+    width: 100%;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .slot.hero .preview{ aspect-ratio: 4/5; }
+  .slot.profile .preview{ aspect-ratio: 3/4; }
+  .slot .preview img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .slot .preview .ph{
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    color: var(--sumi-soft);
+    background: linear-gradient(135deg, var(--bg-deep), var(--bg-paper));
+    font-size: 12px;
+    letter-spacing: .1em;
+  }
+  .slot .preview .ph::before{
+    content: '📷';
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .slot .actions{
+    display: flex; gap: 8px;
+  }
+  .slot .actions .btn{ flex: 1; }
+  .slot .updated{
+    font-size: 11px;
+    color: var(--sumi-soft);
+    margin-top: 10px;
+    font-family: var(--italic);
+    font-style: italic;
+    letter-spacing: .05em;
+    min-height: 1em;
+  }
+
+  /* 保存バー */
+  .save-bar{
+    position: sticky;
+    bottom: 12px;
+    background: var(--sumi);
+    color: var(--bg-paper);
+    padding: 14px 22px;
+    border-radius: 6px;
+    margin-top: 22px;
+    display: none;
+    justify-content: space-between; align-items: center;
+    box-shadow: 0 8px 22px rgba(43,38,37,.28);
+    flex-wrap: wrap; gap: 12px;
+    z-index: 10;
+  }
+  .save-bar.visible{ display: flex; }
+  .save-bar .info{ font-size: 13px; letter-spacing: .05em; }
+  .save-bar .info .num{
+    color: var(--sakura);
+    margin: 0 4px;
+    font-size: 16px;
+    font-family: var(--italic);
+    font-weight: 600;
+  }
+  .save-bar .actions{ display: flex; gap: 8px; align-items: center; }
+  .save-bar .btn-ghost{
+    background: rgba(255,255,255,.08);
+    color: white;
+    border-color: rgba(255,255,255,.3);
+  }
+  .save-bar .btn-ghost:hover{ background: rgba(255,255,255,.18); }
+  .save-bar .save-msg{
+    font-size: 12px;
+    margin-right: 10px;
+    color: var(--sakura);
+  }
+  .save-bar .save-msg.error{ color: #ffb4b4; }
+
+  /* トースト */
+  .toast{
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    z-index: 300;
+    background: var(--success);
+    box-shadow: 0 8px 20px rgba(43,38,37,.25);
+    animation: slideUp .3s ease;
+  }
+  .toast.error{ background: var(--danger); }
+  @keyframes slideUp{
+    from{ opacity:0; transform: translate(-50%, 20px); }
+    to  { opacity:1; transform: translate(-50%, 0); }
+  }
+
+  @media (max-width: 720px){
+    .slots{ grid-template-columns: 1fr; }
+    body{ padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ログイン画面 -->
+<div id="login-screen" class="login-box">
+  <h2>❀ サイト画像管理</h2>
+  <p class="lead">パスワードを入力してください</p>
+  <input type="password" id="password-input" placeholder="パスワード" autocomplete="current-password">
+  <button class="btn btn-primary" style="width:100%;" id="login-btn">ログイン</button>
+  <p id="login-error" class="err"></p>
+</div>
+
+<!-- 管理画面 -->
+<div id="admin-screen" class="container" style="display:none;">
+  <header class="app-head">
+    <h1>サイト画像管理</h1>
+    <div class="meta">
+      <a href="/admin/costumes.html" style="color:var(--sumi-soft); text-decoration:underline;">衣装管理へ</a>
+      <button class="btn btn-ghost btn-sm" id="logout-btn">ログアウト</button>
+    </div>
+  </header>
+
+  <div class="slots">
+    <!-- HERO -->
+    <div class="slot hero" data-slot="hero">
+      <h2>ヒーロー画像</h2>
+      <p class="desc">トップ最上部・縦長 4:5（推奨 1600px幅以上）</p>
+      <div class="preview" data-action="upload" id="preview-hero">
+        <div class="ph">画像なし</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost btn-sm" data-action="upload">📷 画像をアップロード</button>
+        <button class="btn btn-danger btn-sm" data-action="remove">削除</button>
+      </div>
+      <div class="updated" id="updated-hero"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="slot profile" data-slot="profile">
+      <h2>プロフィール画像</h2>
+      <p class="desc">About セクション・縦長 3:4（推奨 1000px幅以上）</p>
+      <div class="preview" data-action="upload" id="preview-profile">
+        <div class="ph">画像なし</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost btn-sm" data-action="upload">📷 画像をアップロード</button>
+        <button class="btn btn-danger btn-sm" data-action="remove">削除</button>
+      </div>
+      <div class="updated" id="updated-profile"></div>
+    </div>
+  </div>
+
+  <div class="save-bar" id="save-bar">
+    <div class="info">
+      <span class="num" id="dirty-count">0</span>件の未保存があります
+    </div>
+    <div class="actions">
+      <span class="save-msg" id="save-msg"></span>
+      <button class="btn btn-ghost" id="discard-btn">破棄</button>
+      <button class="btn btn-primary" id="save-btn">変更を保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ★ Cloudinary 設定（admin/costumes.html と同じ値で揃える）★
+   ============================================================ */
+const CLOUDINARY_CLOUD_NAME    = 'YOUR_CLOUD_NAME';
+const CLOUDINARY_UPLOAD_PRESET = 'miyo_costumes';
+
+const SLOTS = ['hero', 'profile'];
+const SLOT_TRANSFORMS = {
+  hero:    'f_auto,q_auto,w_1600',
+  profile: 'f_auto,q_auto,w_1000'
+};
+
+let password = '';
+let siteImages = { hero: { image: '', updatedAt: '' }, profile: { image: '', updatedAt: '' } };
+let originalSiteImages = { hero: { image: '', updatedAt: '' }, profile: { image: '', updatedAt: '' } };
+
+function deepClone(v){ return JSON.parse(JSON.stringify(v)); }
+function showToast(msg, type){
+  const old = document.querySelector('.toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.className = 'toast' + (type === 'error' ? ' error' : '');
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+function formatDate(iso){
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return '';
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mi = String(d.getMinutes()).padStart(2, '0');
+  return `最終更新 ${yyyy}/${mm}/${dd} ${hh}:${mi}`;
+}
+
+/* ===========================================================
+   ログイン（取得→そのまま PUT で認証チェック）
+   =========================================================== */
+async function attemptLogin(){
+  const pw = document.getElementById('password-input').value.trim();
+  const errEl = document.getElementById('login-error');
+  errEl.textContent = '';
+  if (!pw){
+    errEl.textContent = 'パスワードを入力してください';
+    return;
+  }
+  const loginBtn = document.getElementById('login-btn');
+  loginBtn.disabled = true;
+  loginBtn.textContent = '確認中...';
+
+  try {
+    const getRes = await fetch('/api/site-images', { cache: 'no-store' });
+    if (!getRes.ok) throw new Error('GET failed');
+    const getData = await getRes.json();
+    const current = (getData && getData.siteImages) || { hero: { image: '' }, profile: { image: '' } };
+
+    // 現データをそのまま PUT して認証だけ確認
+    const verify = await fetch('/api/site-images', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password: pw,
+        siteImages: {
+          hero:    { image: (current.hero    && current.hero.image)    || '' },
+          profile: { image: (current.profile && current.profile.image) || '' }
+        }
+      })
+    });
+    if (verify.status === 401){
+      errEl.textContent = 'パスワードが違います';
+      return;
+    }
+    if (!verify.ok){
+      const body = await verify.json().catch(() => ({}));
+      errEl.textContent = '接続エラー: ' + (body.error || verify.status);
+      return;
+    }
+    const verified = await verify.json();
+    const fresh = (verified && verified.siteImages) || current;
+
+    password = pw;
+    siteImages = {
+      hero:    { image: (fresh.hero    && fresh.hero.image)    || '', updatedAt: (fresh.hero    && fresh.hero.updatedAt)    || '' },
+      profile: { image: (fresh.profile && fresh.profile.image) || '', updatedAt: (fresh.profile && fresh.profile.updatedAt) || '' }
+    };
+    originalSiteImages = deepClone(siteImages);
+
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    render();
+  } catch (e){
+    errEl.textContent = '接続エラーが発生しました';
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'ログイン';
+  }
+}
+
+function logout(){
+  if (getDirtyCount() > 0 && !confirm('未保存の変更があります。本当にログアウトしますか？')) return;
+  password = '';
+  location.reload();
+}
+
+/* ===========================================================
+   差分検出
+   =========================================================== */
+function isSlotDirty(slot){
+  return (siteImages[slot].image || '') !== (originalSiteImages[slot].image || '');
+}
+function getDirtyCount(){
+  let n = 0;
+  for (const s of SLOTS) if (isSlotDirty(s)) n++;
+  return n;
+}
+
+/* ===========================================================
+   描画
+   =========================================================== */
+function render(){
+  for (const slot of SLOTS){
+    const slotEl = document.querySelector(`.slot[data-slot="${slot}"]`);
+    const previewEl = document.getElementById(`preview-${slot}`);
+    const updatedEl = document.getElementById(`updated-${slot}`);
+    const cur = siteImages[slot];
+
+    slotEl.classList.toggle('dirty', isSlotDirty(slot));
+
+    if (cur.image){
+      previewEl.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = cur.image;
+      img.alt = slot;
+      img.referrerPolicy = 'no-referrer';
+      img.loading = 'lazy';
+      previewEl.appendChild(img);
+    } else {
+      previewEl.innerHTML = '<div class="ph">画像なし</div>';
+    }
+
+    updatedEl.textContent = formatDate(cur.updatedAt);
+  }
+  updateSaveBar();
+}
+
+function updateSaveBar(){
+  const n = getDirtyCount();
+  document.getElementById('dirty-count').textContent = n;
+  document.getElementById('save-bar').classList.toggle('visible', n > 0);
+}
+
+/* ===========================================================
+   画像アップロード
+   =========================================================== */
+function uploadImage(slot){
+  if (CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'){
+    showToast('Cloudinary 設定が未完了です（admin/site-images.html を編集）', 'error');
+    return;
+  }
+  if (typeof cloudinary === 'undefined'){
+    showToast('Cloudinary ライブラリの読み込みに失敗しました', 'error');
+    return;
+  }
+  const transform = SLOT_TRANSFORMS[slot];
+  const widget = cloudinary.createUploadWidget({
+    cloudName: CLOUDINARY_CLOUD_NAME,
+    uploadPreset: CLOUDINARY_UPLOAD_PRESET,
+    folder: 'miyo/site-images',
+    sources: ['local', 'camera', 'url'],
+    multiple: false,
+    maxFileSize: 15_000_000,
+    cropping: false,
+    showAdvancedOptions: false,
+    showPoweredBy: false,
+    language: 'ja'
+  }, (error, result) => {
+    if (error){
+      console.error(error);
+      showToast('アップロードに失敗しました', 'error');
+      return;
+    }
+    if (result && result.event === 'success' && result.info && result.info.secure_url){
+      const baseUrl = result.info.secure_url;
+      const optimized = /\/upload\/(f_auto|q_auto|w_)/.test(baseUrl)
+        ? baseUrl
+        : baseUrl.replace('/upload/', `/upload/${transform}/`);
+      siteImages[slot].image = optimized;
+      render();
+      showToast('画像をアップロードしました（保存ボタンで反映）');
+    }
+  });
+  widget.open();
+}
+
+function removeImage(slot){
+  if (!siteImages[slot].image) return;
+  if (!confirm('この画像を削除しますか？\n（保存ボタンを押すまで元に戻せます）')) return;
+  siteImages[slot].image = '';
+  render();
+}
+
+/* ===========================================================
+   破棄／保存
+   =========================================================== */
+function discardChanges(){
+  if (!confirm('未保存の変更をすべて破棄しますか？')) return;
+  siteImages = deepClone(originalSiteImages);
+  document.getElementById('save-msg').textContent = '';
+  render();
+}
+
+async function saveAll(){
+  const btn = document.getElementById('save-btn');
+  const msg = document.getElementById('save-msg');
+  btn.disabled = true;
+  btn.textContent = '保存中...';
+  msg.classList.remove('error');
+  msg.textContent = '';
+
+  try {
+    const res = await fetch('/api/site-images', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        password,
+        siteImages: {
+          hero:    { image: siteImages.hero.image    || '' },
+          profile: { image: siteImages.profile.image || '' }
+        }
+      })
+    });
+    if (res.status === 401){
+      msg.classList.add('error');
+      msg.textContent = 'パスワードエラー';
+      showToast('パスワードが違います。再ログインしてください', 'error');
+      setTimeout(logout, 1500);
+      return;
+    }
+    if (!res.ok){
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    if (data && data.siteImages){
+      siteImages = {
+        hero:    { image: data.siteImages.hero.image    || '', updatedAt: data.siteImages.hero.updatedAt    || '' },
+        profile: { image: data.siteImages.profile.image || '', updatedAt: data.siteImages.profile.updatedAt || '' }
+      };
+      originalSiteImages = deepClone(siteImages);
+    } else {
+      originalSiteImages = deepClone(siteImages);
+    }
+    render();
+    showToast('保存しました ✓');
+  } catch (e){
+    msg.classList.add('error');
+    msg.textContent = '保存失敗';
+    showToast('保存に失敗しました: ' + e.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '変更を保存';
+  }
+}
+
+/* ===========================================================
+   イベント
+   =========================================================== */
+document.getElementById('login-btn').addEventListener('click', attemptLogin);
+document.getElementById('password-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') attemptLogin();
+});
+document.getElementById('logout-btn').addEventListener('click', logout);
+document.getElementById('save-btn').addEventListener('click', saveAll);
+document.getElementById('discard-btn').addEventListener('click', discardChanges);
+
+document.querySelectorAll('.slot').forEach(slotEl => {
+  slotEl.addEventListener('click', e => {
+    const action = e.target.closest('[data-action]')?.dataset.action;
+    if (!action) return;
+    const slot = slotEl.dataset.slot;
+    if (action === 'upload') uploadImage(slot);
+    else if (action === 'remove') removeImage(slot);
+  });
+});
+
+window.addEventListener('beforeunload', e => {
+  if (getDirtyCount() > 0){
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+document.getElementById('password-input').focus();
+</script>
+
+</body>
+</html>
