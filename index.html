@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美夜 miyo｜被写体撮影会のご予約</title>
+<meta name="description" content="被写体・美夜（miyo）の撮影会ご予約ページ。和装・コスプレ・ドレスなど200着以上の衣装からお選びいただけます。Stripeによる安全な事前決済対応。">
+<meta name="theme-color" content="#f5f0e6">
+<meta name="format-detection" content="telephone=no">
+<meta name="robots" content="index,follow">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="美夜 miyo｜被写体撮影会のご予約">
+<meta property="og:description" content="和装・コスプレ・ドレスなど200着以上の衣装からお選びいただける、美夜（miyo）の撮影会ご予約ページ。">
+<meta property="og:site_name" content="美夜 miyo">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="/ogp.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="美夜 miyo｜被写体撮影会のご予約">
+<meta name="twitter:description" content="和装・コスプレ・ドレスなど200着以上の衣装からお選びいただける、美夜（miyo）の撮影会ご予約ページ。">
+<meta name="twitter:image" content="/ogp.png">
+
+<!-- Favicon (inline SVG・桜) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23f5f0e6'/><g><path d='M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z' fill='%23d18a8f'/><path d='M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z' fill='%23d18a8f' transform='rotate(72 50 50)'/><path d='M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z' fill='%23d18a8f' transform='rotate(144 50 50)'/><path d='M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z' fill='%23d18a8f' transform='rotate(216 50 50)'/><path d='M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z' fill='%23d18a8f' transform='rotate(288 50 50)'/><circle cx='50' cy='50' r='5' fill='%23faf6ec'/></g></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+
+<!-- 構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "美夜",
+  "alternateName": "miyo",
+  "description": "和装・コスプレ・ポートレートを中心に活動する被写体",
+  "sameAs": [
+    "https://www.instagram.com/lagdol_/"
+  ]
+}
+</script>
+<style>
+  /* =========================================================
+     カラーパレット ── 和モダン×ライト（生成り・桜色・墨）
+     ========================================================= */
+  :root{
+    --bg:        #f5f0e6;
+    --bg-deep:   #ece4d3;
+    --bg-paper:  #faf6ec;
+    --sakura:    #e8b4b8;
+    --sakura-deep:#d18a8f;
+    --rose:      #c97a7e;
+    --nemophila: #6b8cc7;
+    --nemophila-light:#a8c0e0;
+    --leaf:      #94a87a;
+    --sumi:      #2b2625;
+    --sumi-soft: #5a514f;
+    --gold:      #b8956a;
+    --gold-light:#d4b88a;
+    --line:      #d8cfb8;
+    --shadow:    rgba(43,38,37,.08);
+
+    --serif: 'Shippori Mincho', 'Yu Mincho', '游明朝', YuMincho, serif;
+    --sans:  'Noto Sans JP', 'Hiragino Sans', sans-serif;
+    --italic:'Cormorant Garamond', serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family: var(--sans);
+    color: var(--sumi);
+    background: var(--bg);
+    line-height: 1.9;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* 和紙テクスチャ（ぼんやりとした光） */
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184,149,106,.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(232,180,184,.05) 0%, transparent 50%);
+    opacity:.9;
+  }
+
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+
+  /* =========================================================
+     花の装飾 SVG（ページ全体に散らす絶対配置）
+     ========================================================= */
+  .deco-flower{
+    position: absolute;
+    pointer-events: none;
+    opacity: .85;
+    z-index: 0;
+    transition: transform 1.2s ease;
+  }
+  .deco-flower svg{ width:100%; height:100%; display:block; }
+
+  /* =========================================================
+     共通レイアウト
+     ========================================================= */
+  .wrap{ width:min(1100px, 92%); margin:0 auto; position:relative; z-index:2; }
+  section{ padding: clamp(70px, 11vw, 140px) 0; position:relative; overflow: hidden; }
+
+  /* セクションタイトル */
+  .sec-head{ text-align:center; margin-bottom: clamp(40px, 6vw, 70px); position:relative; z-index:3; }
+  .sec-head .en{
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: var(--gold);
+    letter-spacing: .25em;
+    display:block;
+    margin-bottom: 14px;
+  }
+  .sec-head h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(26px, 4vw, 38px);
+    letter-spacing: .18em;
+    color: var(--sumi);
+    position: relative;
+    display: inline-block;
+    padding: 0 30px;
+  }
+  .sec-head h2::before, .sec-head h2::after{
+    content:''; position:absolute; top:50%;
+    width: 22px; height: 1px; background: var(--gold);
+  }
+  .sec-head h2::before{ left: -10px; transform: translate(-100%, -50%); }
+  .sec-head h2::after { right: -10px; transform: translate(100%, -50%); }
+
+  /* =========================================================
+     ヘッダー
+     ========================================================= */
+  header{
+    position: fixed; top:0; left:0; right:0; z-index: 100;
+    padding: 18px 5%;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(245, 240, 230, .82);
+    border-bottom: 1px solid rgba(216, 207, 184, .5);
+    display:flex; justify-content:space-between; align-items:center;
+    transition: padding .3s ease;
+  }
+  header .logo{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: .3em;
+  }
+  header .logo .en{
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--gold);
+    margin-left: 8px;
+    letter-spacing: .2em;
+    font-weight: 400;
+  }
+  header nav ul{ list-style:none; display:flex; gap: clamp(16px, 2.5vw, 32px); }
+  header nav a{
+    font-size: 13px; letter-spacing: .15em; color: var(--sumi-soft);
+    transition: color .3s; position: relative; padding: 4px 0;
+  }
+  header nav a:hover{ color: var(--sakura-deep); }
+  header nav a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-2px; height:1px;
+    background: var(--sakura-deep); transform: scaleX(0); transition: transform .3s;
+  }
+  header nav a:hover::after{ transform: scaleX(1); }
+
+  @media (max-width: 720px){
+    header nav ul{ gap: 14px; }
+    header nav a{ font-size: 11px; letter-spacing:.05em; }
+    header .logo{ font-size: 17px; }
+    header .logo .en{ display:none; }
+  }
+
+  /* =========================================================
+     ヒーローセクション
+     ========================================================= */
+  .hero{
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 130px 0 90px;
+    position: relative;
+  }
+  .hero::before{
+    content:''; position: absolute; top: 15%; right: -10%;
+    width: 60vw; height: 60vw; max-width: 700px; max-height: 700px;
+    background: radial-gradient(circle, rgba(232,180,184,.28) 0%, transparent 65%);
+    z-index: 0;
+  }
+  .hero::after{
+    content:''; position: absolute; bottom: 5%; left: -15%;
+    width: 50vw; height: 50vw; max-width: 600px; max-height: 600px;
+    background: radial-gradient(circle, rgba(107,140,199,.13) 0%, transparent 65%);
+    z-index: 0;
+  }
+
+  /* ヒーローの花配置 */
+  .hero .deco-1{ top: 8%; left: 3%; width: 130px; height: 130px; transform: rotate(-15deg); }
+  .hero .deco-2{ top: 70%; right: 4%; width: 110px; height: 110px; transform: rotate(20deg); }
+  .hero .deco-3{ bottom: 8%; left: 35%; width: 70px; height: 70px; opacity:.6; }
+
+  .hero-inner{
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(30px, 5vw, 80px);
+    align-items: center;
+    position: relative; z-index: 3;
+  }
+
+  .hero-text .vertical-mark{
+    writing-mode: vertical-rl;
+    font-family: var(--serif);
+    font-size: 12px;
+    letter-spacing: .8em;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding: 4px 8px;
+    border-left: 1px solid var(--gold);
+  }
+  .hero-text h1{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(34px, 6vw, 64px);
+    line-height: 1.35;
+    letter-spacing: .08em;
+    color: var(--sumi);
+    margin-bottom: 24px;
+  }
+  .hero-text h1 .accent{
+    color: var(--sakura-deep);
+    font-weight: 600;
+  }
+  .hero-text .name-en{
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 28px);
+    color: var(--gold);
+    letter-spacing: .25em;
+    margin-bottom: 30px;
+    display:block;
+  }
+  .hero-text p.lead{
+    font-size: 15px;
+    line-height: 2.2;
+    color: var(--sumi-soft);
+    margin-bottom: 38px;
+    max-width: 480px;
+  }
+  .cta-row{ display:flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap: 10px;
+    padding: 16px 36px;
+    font-size: 13px;
+    letter-spacing: .25em;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all .35s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary{
+    background: var(--sumi);
+    color: var(--bg-paper);
+  }
+  .btn-primary:hover{
+    background: var(--sakura-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(209,138,143,.35);
+  }
+  .btn-ghost{
+    background: transparent;
+    color: var(--sumi);
+    border: 1px solid var(--sumi);
+  }
+  .btn-ghost:hover{
+    background: var(--sumi);
+    color: var(--bg-paper);
+  }
+
+  /* ヒーロービジュアル */
+  .hero-visual{
+    position: relative;
+    aspect-ratio: 4/5;
+    max-width: 460px;
+    margin-left: auto;
+  }
+  .hero-visual .frame{
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--bg-paper) 0%, var(--bg-deep) 100%);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 60px var(--shadow);
+    overflow: hidden;
+  }
+  .hero-visual .frame::before{
+    content:''; position:absolute; inset: 12px;
+    border: 1px solid rgba(184,149,106,.4);
+    pointer-events: none;
+  }
+  .hero-visual .placeholder{
+    position: absolute; inset: 0;
+    display:flex; align-items:center; justify-content:center; flex-direction: column;
+    color: var(--sumi-soft); text-align:center; padding: 20px;
+  }
+  .hero-visual .placeholder .ja{
+    font-family: var(--serif);
+    font-size: 56px;
+    letter-spacing: .15em;
+    color: var(--sakura-deep);
+    margin-bottom: 16px;
+    opacity: .75;
+  }
+  .hero-visual .placeholder .en{
+    font-family: var(--italic);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--gold);
+    letter-spacing: .2em;
+  }
+  .hero-visual .stamp{
+    position: absolute; bottom: -22px; right: -22px;
+    width: 90px; height: 90px;
+    background: var(--sakura-deep);
+    color: var(--bg-paper);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .15em;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(209,138,143,.4);
+    transform: rotate(-8deg);
+  }
+
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .hero-visual{ max-width: 360px; margin: 0 auto; }
+  }
+
+  /* =========================================================
+     ABOUT
+     ========================================================= */
+  .about{ background: linear-gradient(180deg, var(--bg) 0%, var(--bg-paper) 100%); }
+  .about .deco-1{ top: 10%; right: 5%; width: 100px; height: 100px; transform: rotate(25deg); opacity:.7; }
+  .about .deco-2{ bottom: 12%; left: 4%; width: 120px; height: 120px; transform: rotate(-20deg); opacity:.6; }
+
+  .about-grid{
+    display:grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 5vw, 80px);
+    align-items: start;
+  }
+  .about-img{
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-paper) 100%);
+    border: 1px solid var(--line);
+    position: relative;
+    box-shadow: 0 20px 40px var(--shadow);
+  }
+  .about-img::before{
+    content:''; position:absolute; inset:10px; border:1px solid rgba(184,149,106,.3);
+  }
+  .about-img .ph{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--gold-light); font-family: var(--serif); font-size: 70px; letter-spacing:.1em;
+  }
+  .about-text h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(20px, 2.5vw, 26px);
+    line-height: 1.9;
+    letter-spacing: .1em;
+    margin-bottom: 28px;
+    color: var(--sumi);
+  }
+  .about-text p{
+    font-size: 15px; line-height: 2.2; color: var(--sumi-soft); margin-bottom: 18px;
+  }
+  .about-meta{
+    margin-top: 36px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .about-meta dl{
+    display: grid; grid-template-columns: 110px 1fr; gap: 12px 20px;
+    font-size: 14px;
+  }
+  .about-meta dt{
+    font-family: var(--serif);
+    color: var(--gold);
+    letter-spacing: .1em;
+  }
+  .about-meta dd{ color: var(--sumi-soft); }
+
+  @media (max-width: 760px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .about-img{ max-width: 320px; margin: 0 auto; }
+  }
+
+  /* =========================================================
+     PRICING
+     ========================================================= */
+  .pricing{ background: var(--bg); position: relative; }
+  .pricing .deco-1{ top: 8%; left: 6%; width: 90px; height: 90px; opacity:.5; }
+  .pricing .deco-2{ bottom: 10%; right: 5%; width: 110px; height: 110px; opacity:.6; transform: rotate(40deg); }
+
+  .price-card{
+    max-width: 640px; margin: 0 auto;
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    padding: clamp(40px, 6vw, 70px) clamp(30px, 5vw, 60px);
+    position: relative;
+    box-shadow: 0 20px 50px var(--shadow);
+  }
+  .price-card::before, .price-card::after{
+    content:''; position:absolute; width: 32px; height: 32px;
+    border: 1px solid var(--gold);
+  }
+  .price-card::before{ top: 14px; left: 14px; border-right:none; border-bottom:none; }
+  .price-card::after { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+
+  .price-card .label{
+    text-align:center;
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: .4em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .price-card .amount{
+    text-align:center;
+    font-family: var(--serif);
+    font-size: clamp(48px, 8vw, 76px);
+    font-weight: 600;
+    color: var(--sumi);
+    letter-spacing: .04em;
+    margin-bottom: 8px;
+  }
+  .price-card .amount .yen{ font-size: .55em; margin-left: 6px; color: var(--sumi-soft); }
+  .price-card .amount .tax{ font-size: .35em; color: var(--sumi-soft); margin-left: 8px; font-weight: 400; }
+  .price-card .duration{
+    text-align:center;
+    font-family: var(--serif);
+    font-size: 16px;
+    letter-spacing: .15em;
+    color: var(--sumi-soft);
+    margin-bottom: 36px;
+  }
+  .price-card .divider{
+    height:1px; background: var(--line); margin: 32px 0;
+    position: relative;
+  }
+  .price-card .divider::before{
+    content:'❀'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    background: var(--bg-paper); padding: 0 16px;
+    color: var(--sakura-deep); font-size: 14px;
+  }
+  .price-card .options{
+    background: var(--bg);
+    padding: 24px 28px;
+    border-radius: 4px;
+  }
+  .price-card .options h4{
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: .15em;
+    color: var(--sumi);
+    margin-bottom: 14px;
+    text-align:center;
+  }
+  .price-card .options ul{ list-style:none; }
+  .price-card .options li{
+    font-size: 14px;
+    color: var(--sumi-soft);
+    padding: 8px 0;
+    display:flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px dashed var(--line);
+  }
+  .price-card .options li:last-child{ border-bottom: none; }
+  .price-card .options li .plus{
+    color: var(--sakura-deep);
+    font-family: var(--serif);
+    font-weight: 600;
+  }
+
+  /* =========================================================
+     COSTUME（衣装リクエスト）
+     ========================================================= */
+  .costume{ background: linear-gradient(180deg, var(--bg-paper) 0%, var(--bg-deep) 100%); }
+  .costume .deco-1{ top: 6%; left: 3%; width: 110px; height: 110px; opacity:.6; transform: rotate(-30deg); }
+  .costume .deco-2{ top: 60%; right: 2%; width: 95px; height: 95px; opacity:.55; transform: rotate(15deg); }
+  .costume .deco-3{ bottom: 5%; left: 50%; width: 75px; height: 75px; opacity:.5; }
+
+  .costume-intro{
+    text-align: center;
+    max-width: 680px; margin: 0 auto 48px;
+    font-size: 15px; line-height: 2.2; color: var(--sumi-soft);
+  }
+
+  /* カテゴリーフィルタ */
+  .category-tabs{
+    display:flex; flex-wrap:wrap; justify-content:center; gap: 10px;
+    margin-bottom: 36px;
+  }
+  .category-tabs button{
+    padding: 9px 22px;
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .15em;
+    color: var(--sumi-soft);
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    transition: all .25s;
+  }
+  .category-tabs button:hover{
+    color: var(--sakura-deep);
+    border-color: var(--sakura);
+  }
+  .category-tabs button.active{
+    background: var(--sumi);
+    color: var(--bg-paper);
+    border-color: var(--sumi);
+  }
+
+  /* 衣装グリッド */
+  .costume-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .costume-card{
+    position: relative;
+    aspect-ratio: 3/4;
+    background: var(--bg-paper);
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  .costume-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px var(--shadow);
+    border-color: var(--gold-light);
+  }
+  .costume-card.selected{
+    border-color: var(--sakura-deep);
+    box-shadow: 0 0 0 3px rgba(232,180,184,.4), 0 14px 28px var(--shadow);
+  }
+  .costume-card .check{
+    display:none;
+    position: absolute; top: 10px; right: 10px;
+    width: 28px; height: 28px;
+    background: var(--sakura-deep);
+    color: var(--bg-paper);
+    border-radius: 50%;
+    align-items: center; justify-content:center;
+    font-size: 14px; font-weight: 700;
+    z-index: 3;
+    box-shadow: 0 4px 10px rgba(209,138,143,.4);
+  }
+  .costume-card.selected .check{ display:flex; }
+  .costume-card img{
+    width:100%; height: 100%; object-fit: cover;
+    transition: transform .4s;
+  }
+  .costume-card:hover img{ transform: scale(1.05); }
+  .costume-card .placeholder-img{
+    position: absolute; inset: 0;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-paper) 100%);
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 28px;
+    letter-spacing: .1em;
+  }
+  .costume-card .info{
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 8px 10px;
+    background: linear-gradient(180deg, transparent 0%, rgba(43,38,37,.85) 100%);
+    color: var(--bg-paper);
+    font-size: 11px;
+    letter-spacing: .1em;
+    line-height: 1.4;
+  }
+  .costume-card .info .num{
+    font-family: var(--italic); font-style: italic;
+    color: var(--gold-light);
+    font-size: 10px;
+    margin-bottom: 2px; display:block;
+  }
+
+  /* 選択状態のフッター（スティッキー） */
+  .selection-bar{
+    position: sticky; bottom: 16px;
+    margin: 30px auto 0;
+    max-width: 720px;
+    background: var(--sumi);
+    color: var(--bg-paper);
+    border-radius: 6px;
+    padding: 18px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 12px 32px rgba(43,38,37,.25);
+    z-index: 10;
+    flex-wrap: wrap; gap: 14px;
+  }
+  .selection-bar .info-block{ display:flex; align-items: center; gap: 22px; flex-wrap:wrap; }
+  .selection-bar .count{
+    font-family: var(--serif);
+    font-size: 14px; letter-spacing: .12em;
+  }
+  .selection-bar .count strong{
+    font-size: 22px;
+    color: var(--sakura);
+    font-weight: 600;
+    margin: 0 4px;
+  }
+  .selection-bar .total{
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .1em;
+    color: var(--gold-light);
+  }
+  .selection-bar .total strong{
+    font-size: 22px;
+    color: var(--bg-paper);
+    margin: 0 4px;
+    font-weight: 600;
+  }
+  .selection-bar button{
+    background: var(--sakura-deep);
+    color: var(--bg-paper);
+    padding: 10px 24px;
+    border-radius: 3px;
+    font-size: 13px;
+    letter-spacing: .15em;
+    transition: background .25s;
+  }
+  .selection-bar button:hover{ background: var(--sakura); color: var(--sumi); }
+  .selection-bar button.clear{
+    background: transparent;
+    border: 1px solid rgba(245,240,230,.4);
+    color: var(--bg-paper);
+    padding: 9px 18px;
+  }
+
+  /* =========================================================
+     注意事項
+     ========================================================= */
+  .notice{ background: var(--bg-paper); position: relative; }
+  .notice .deco-1{ top: 5%; right: 4%; width: 100px; height: 100px; opacity:.6; transform: rotate(20deg); }
+  .notice .deco-2{ bottom: 8%; left: 3%; width: 90px; height: 90px; opacity:.55; transform: rotate(-15deg); }
+
+  .notice-intro{
+    text-align:center; max-width: 640px; margin: 0 auto 50px;
+    font-size: 15px; line-height: 2.2; color: var(--sumi-soft);
+  }
+  .notice-list{
+    max-width: 820px; margin: 0 auto;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: clamp(30px, 5vw, 50px);
+    border-radius: 4px;
+    list-style: none;
+    counter-reset: notice-counter;
+  }
+  .notice-list li{
+    counter-increment: notice-counter;
+    padding: 16px 0 16px 50px;
+    border-bottom: 1px dashed var(--line);
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: var(--sumi);
+    position: relative;
+  }
+  .notice-list li:last-child{ border-bottom: none; }
+  .notice-list li::before{
+    content: counter(notice-counter, decimal-leading-zero);
+    position: absolute; left: 0; top: 17px;
+    font-family: var(--italic);
+    font-style: italic;
+    color: var(--sakura-deep);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .05em;
+  }
+  .notice-message{
+    text-align: center;
+    margin-top: 40px;
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: .1em;
+    color: var(--sumi-soft);
+    line-height: 2.2;
+  }
+  .notice-message .sakura-icon{ color: var(--sakura-deep); margin: 0 4px; }
+
+  /* =========================================================
+     RESERVATION（予約フォーム）
+     ========================================================= */
+  .reservation{ background: linear-gradient(180deg, var(--bg-paper) 0%, var(--bg) 100%); }
+  .reservation .deco-1{ top: 8%; left: 5%; width: 110px; height: 110px; opacity:.6; }
+  .reservation .deco-2{ bottom: 10%; right: 5%; width: 100px; height: 100px; opacity:.55; transform: rotate(35deg); }
+
+  .form-wrapper{
+    max-width: 720px; margin: 0 auto;
+    background: var(--bg-paper);
+    padding: clamp(36px, 5vw, 60px);
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 50px var(--shadow);
+    position: relative;
+  }
+  .form-wrapper::before, .form-wrapper::after{
+    content:''; position:absolute; width: 24px; height: 24px;
+    border: 1px solid var(--gold);
+  }
+  .form-wrapper::before{ top: 12px; left: 12px; border-right:none; border-bottom:none; }
+  .form-wrapper::after { bottom: 12px; right: 12px; border-left:none; border-top:none; }
+
+  .form-row{ margin-bottom: 22px; }
+  .form-row label{
+    display:block;
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: .15em;
+    color: var(--sumi);
+    margin-bottom: 8px;
+  }
+  .form-row label .req{
+    color: var(--sakura-deep);
+    font-size: 11px;
+    margin-left: 6px;
+  }
+  .form-row input,
+  .form-row select,
+  .form-row textarea{
+    width:100%;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--sumi);
+    transition: border-color .25s;
+  }
+  .form-row input:focus,
+  .form-row select:focus,
+  .form-row textarea:focus{
+    outline: none;
+    border-color: var(--sakura-deep);
+    background: var(--bg-paper);
+  }
+  .form-row textarea{ resize: vertical; min-height: 100px; }
+
+  .form-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 600px){ .form-grid{ grid-template-columns: 1fr; } }
+
+  .form-summary{
+    background: var(--bg);
+    padding: 22px;
+    border: 1px dashed var(--gold-light);
+    border-radius: 3px;
+    margin: 28px 0;
+  }
+  .form-summary h4{
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: .2em;
+    color: var(--gold);
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .form-summary .row{
+    display:flex; justify-content: space-between; padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .form-summary .row:last-child{ border-bottom: none; }
+  .form-summary .row.total{
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--sumi);
+    padding-top: 14px;
+    margin-top: 8px;
+    border-top: 2px solid var(--sumi);
+    border-bottom: none;
+  }
+  .form-summary .row.total span:last-child{
+    color: var(--sakura-deep);
+    font-weight: 600;
+    font-size: 22px;
+  }
+
+  .agreement{
+    display:flex; align-items: flex-start; gap: 10px;
+    margin: 24px 0;
+    font-size: 13px;
+    color: var(--sumi-soft);
+    line-height: 1.7;
+  }
+  .agreement input{ margin-top: 5px; accent-color: var(--sakura-deep); }
+
+  .submit-btn{
+    width:100%;
+    padding: 18px;
+    background: var(--sumi);
+    color: var(--bg-paper);
+    font-size: 14px;
+    letter-spacing: .3em;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: all .35s;
+    font-family: var(--serif);
+  }
+  .submit-btn:hover{
+    background: var(--sakura-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(209,138,143,.35);
+  }
+  .submit-btn:disabled{
+    background: var(--line); color: var(--sumi-soft);
+    cursor: not-allowed; transform: none; box-shadow: none;
+  }
+  .stripe-note{
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--sumi-soft);
+    letter-spacing: .1em;
+  }
+  .stripe-note .lock{ color: var(--gold); margin-right: 4px; }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  footer{
+    background: var(--sumi);
+    color: var(--bg-paper);
+    padding: 60px 0 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 50% 0%, rgba(232,180,184,.08) 0%, transparent 60%);
+  }
+  footer .logo{
+    font-family: var(--serif);
+    font-size: 26px;
+    letter-spacing: .35em;
+    margin-bottom: 8px;
+    position:relative;
+  }
+  footer .logo-en{
+    font-family: var(--italic);
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 16px;
+    letter-spacing: .25em;
+    margin-bottom: 36px;
+    position:relative;
+  }
+  footer .sns{
+    display:flex; justify-content:center; gap: 28px;
+    margin: 30px 0;
+    position: relative;
+  }
+  footer .sns a{
+    width: 42px; height: 42px;
+    border: 1px solid rgba(245,240,230,.3);
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: all .3s;
+  }
+  footer .sns a:hover{
+    background: var(--sakura-deep);
+    border-color: var(--sakura-deep);
+    transform: translateY(-2px);
+  }
+  footer .sns svg{ width: 18px; height: 18px; fill: var(--bg-paper); }
+  footer .copy{
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: rgba(245,240,230,.5);
+    margin-top: 30px;
+    position: relative;
+  }
+
+  /* =========================================================
+     アニメーション
+     ========================================================= */
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(30px); }
+    to  { opacity:1; transform: translateY(0); }
+  }
+  @keyframes float{
+    0%,100%{ transform: translateY(0) rotate(var(--r, 0deg)); }
+    50%    { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+  }
+  .deco-flower{ animation: float 7s ease-in-out infinite; }
+  .deco-flower:nth-child(2){ animation-delay: -2s; animation-duration: 9s; }
+  .deco-flower:nth-child(3){ animation-delay: -4s; animation-duration: 8s; }
+  .deco-flower:nth-child(4){ animation-delay: -1s; animation-duration: 10s; }
+
+  .reveal{ opacity:0; transform: translateY(30px); transition: all .9s ease; }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* =========================================================
+     SPOTS（気になるスポット）
+     ========================================================= */
+  .spots{ background: var(--bg-paper); }
+  .spots-intro{
+    text-align:center;
+    color: var(--sumi-soft);
+    font-size: 14px;
+    line-height: 2;
+    margin-bottom: clamp(40px, 5vw, 60px);
+    letter-spacing: .05em;
+  }
+  .spots-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(18px, 2.4vw, 28px);
+    margin-bottom: 36px;
+  }
+  .spots-loading{
+    grid-column: 1 / -1;
+    text-align:center;
+    color: var(--sumi-soft);
+    font-size: 13px;
+    padding: 60px 0;
+    letter-spacing: .15em;
+  }
+  .spot-card{
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    display:flex; flex-direction: column;
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s;
+  }
+  .spot-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--gold-light);
+    box-shadow: 0 14px 30px var(--shadow);
+  }
+  .spot-card .photo{
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--bg-deep) 0%, var(--line) 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .spot-card .photo img{
+    width:100%; height:100%; object-fit: cover; display:block;
+    transition: transform .8s ease;
+  }
+  .spot-card:hover .photo img{ transform: scale(1.05); }
+  .spot-card .photo .ph{
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    color: var(--gold);
+    font-family: var(--serif);
+    font-size: 28px;
+    letter-spacing: .2em;
+    opacity: .6;
+  }
+  .spot-card .body{
+    padding: 18px 20px 20px;
+    flex:1;
+    display:flex; flex-direction: column;
+    gap: 10px;
+  }
+  .spot-card .name{
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    color: var(--sumi);
+    line-height: 1.5;
+  }
+  .spot-card .link{
+    margin-top:auto;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 12px;
+    color: var(--sakura-deep);
+    border-bottom: 1px solid var(--sakura);
+    align-self: flex-start;
+    padding-bottom: 2px;
+    letter-spacing: .1em;
+    transition: color .25s, border-color .25s;
+  }
+  .spot-card .link:hover{ color: var(--rose); border-color: var(--rose); }
+  .spot-card .link svg{ width: 11px; height: 11px; fill: currentColor; }
+  .spot-card.empty{
+    background: repeating-linear-gradient(45deg, var(--bg-paper) 0 12px, var(--bg) 12px 24px);
+    border-style: dashed;
+  }
+  .spot-card.empty .body{ opacity:.55; }
+
+  .spots-edit-trigger{
+    text-align:center;
+    margin-top: 20px;
+  }
+  .spots-edit-trigger button{
+    font-size: 11px;
+    letter-spacing: .25em;
+    color: var(--sumi-soft);
+    border: 1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: transparent;
+    transition: all .3s;
+  }
+  .spots-edit-trigger button:hover{
+    color: var(--sakura-deep);
+    border-color: var(--sakura);
+    background: var(--bg-paper);
+  }
+  .spots-edit-trigger .ico{ margin-right: 4px; }
+
+  /* スポット編集モーダル */
+  .spots-modal{
+    position: fixed; inset:0; z-index: 200;
+    display:none;
+    align-items: center; justify-content: center;
+    background: rgba(43,38,37,.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 20px;
+  }
+  .spots-modal.open{ display:flex; }
+  .spots-modal .panel{
+    background: var(--bg-paper);
+    border-radius: 6px;
+    width: min(720px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: clamp(24px, 3.5vw, 40px);
+    box-shadow: 0 30px 60px rgba(0,0,0,.25);
+    position: relative;
+  }
+  .spots-modal .head{
+    display:flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 22px;
+    gap: 16px;
+  }
+  .spots-modal .head h3{
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.2vw, 22px);
+    letter-spacing: .15em;
+    color: var(--sumi);
+  }
+  .spots-modal .head .close{
+    font-size: 22px; line-height: 1;
+    color: var(--sumi-soft);
+    padding: 4px 8px;
+  }
+  .spots-modal .head .close:hover{ color: var(--sumi); }
+
+  .spots-modal .auth{
+    display:flex; flex-direction: column; gap: 14px;
+    padding: 30px 0 6px;
+  }
+  .spots-modal .auth label{
+    font-size: 12px;
+    color: var(--sumi-soft);
+    letter-spacing: .15em;
+  }
+  .spots-modal .auth input,
+  .spots-modal .editor input{
+    width:100%;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--sumi);
+    background: var(--bg);
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .spots-modal .auth input:focus,
+  .spots-modal .editor input:focus{
+    outline: none;
+    border-color: var(--sakura-deep);
+    box-shadow: 0 0 0 3px rgba(232,180,184,.25);
+  }
+  .spots-modal .auth-error,
+  .spots-modal .save-msg{
+    font-size: 12px;
+    min-height: 18px;
+    letter-spacing: .1em;
+  }
+  .spots-modal .auth-error{ color: var(--rose); }
+  .spots-modal .save-msg{ color: var(--leaf); }
+  .spots-modal .save-msg.error{ color: var(--rose); }
+
+  .spots-modal .editor{ display:none; }
+  .spots-modal.authed .auth{ display:none; }
+  .spots-modal.authed .editor{ display:block; }
+
+  .spot-edit-row{
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    background: var(--bg);
+  }
+  .spot-edit-row .row-head{
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: .2em;
+    margin-bottom: 12px;
+  }
+  .spot-edit-row .field{
+    display:flex; flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .spot-edit-row .field label{
+    font-size: 11px;
+    color: var(--sumi-soft);
+    letter-spacing: .12em;
+  }
+  .spot-edit-row .preview-img{
+    width: 80px; height: 60px;
+    border-radius: 3px;
+    background: var(--bg-deep);
+    background-size: cover;
+    background-position: center;
+    margin-top: 6px;
+    border: 1px solid var(--line);
+  }
+
+  .spots-modal .actions{
+    display:flex; gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  .spots-modal .actions button{
+    padding: 11px 22px;
+    border-radius: 3px;
+    font-size: 13px;
+    letter-spacing: .15em;
+    font-family: var(--serif);
+    transition: all .3s;
+  }
+  .spots-modal .actions .save{
+    background: var(--sumi);
+    color: var(--bg-paper);
+  }
+  .spots-modal .actions .save:hover{ background: var(--sakura-deep); }
+  .spots-modal .actions .save:disabled{
+    background: var(--line); color: var(--sumi-soft); cursor: not-allowed;
+  }
+  .spots-modal .actions .cancel{
+    background: transparent;
+    color: var(--sumi-soft);
+    border: 1px solid var(--line);
+  }
+  .spots-modal .actions .cancel:hover{ color: var(--sumi); border-color: var(--sumi); }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     花の装飾用 SVG（再利用するため <defs> で定義） 
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- バラ -->
+    <symbol id="rose" viewBox="0 0 100 100">
+      <g>
+        <path d="M50 20 Q60 22 62 32 Q70 35 68 45 Q75 50 70 60 Q72 70 62 72 Q60 80 50 78 Q40 80 38 72 Q28 70 30 60 Q25 50 32 45 Q30 35 38 32 Q40 22 50 20 Z" fill="#d18a8f" opacity=".85"/>
+        <path d="M50 30 Q56 32 58 40 Q63 43 60 50 Q63 56 57 58 Q56 63 50 62 Q44 63 43 58 Q37 56 40 50 Q37 43 42 40 Q44 32 50 30 Z" fill="#c97a7e" opacity=".9"/>
+        <path d="M50 38 Q54 40 55 46 Q58 48 55 52 Q56 56 52 56 Q50 58 48 56 Q44 56 45 52 Q42 48 45 46 Q46 40 50 38 Z" fill="#b86065"/>
+        <circle cx="50" cy="48" r="3" fill="#8a4548" opacity=".6"/>
+        <!-- 葉 -->
+        <path d="M28 60 Q18 58 16 70 Q22 75 30 68 Z" fill="#94a87a" opacity=".75"/>
+        <path d="M72 58 Q82 56 84 68 Q78 73 70 66 Z" fill="#94a87a" opacity=".75"/>
+        <path d="M50 80 Q48 92 56 92 Q56 86 52 82 Z" fill="#7d9162" opacity=".7"/>
+      </g>
+    </symbol>
+
+    <!-- ネモフィラ -->
+    <symbol id="nemophila" viewBox="0 0 100 100">
+      <g>
+        <!-- 5枚花弁 -->
+        <ellipse cx="50" cy="32" rx="11" ry="14" fill="#a8c0e0" opacity=".9"/>
+        <ellipse cx="68" cy="44" rx="11" ry="14" fill="#a8c0e0" opacity=".9" transform="rotate(72 68 44)"/>
+        <ellipse cx="62" cy="64" rx="11" ry="14" fill="#a8c0e0" opacity=".9" transform="rotate(144 62 64)"/>
+        <ellipse cx="38" cy="64" rx="11" ry="14" fill="#a8c0e0" opacity=".9" transform="rotate(216 38 64)"/>
+        <ellipse cx="32" cy="44" rx="11" ry="14" fill="#a8c0e0" opacity=".9" transform="rotate(288 32 44)"/>
+        <!-- 中央の白 -->
+        <circle cx="50" cy="50" r="9" fill="#faf6ec"/>
+        <!-- 中心の点 -->
+        <circle cx="50" cy="50" r="3" fill="#6b8cc7"/>
+        <!-- 葉 -->
+        <path d="M20 78 Q14 82 18 88 Q24 86 24 80 Z" fill="#94a87a" opacity=".7"/>
+        <path d="M82 80 Q88 84 84 90 Q78 88 78 82 Z" fill="#94a87a" opacity=".7"/>
+      </g>
+    </symbol>
+
+    <!-- 桜 -->
+    <symbol id="sakura" viewBox="0 0 100 100">
+      <g>
+        <!-- 5枚花弁 -->
+        <path d="M50 25 Q44 32 46 42 Q50 46 54 42 Q56 32 50 25 Z" fill="#f4cad0" opacity=".95"/>
+        <path d="M68 38 Q60 40 56 48 Q58 53 64 51 Q72 46 68 38 Z" fill="#f4cad0" opacity=".95" transform="rotate(72 50 50)"/>
+        <path d="M68 38 Q60 40 56 48 Q58 53 64 51 Q72 46 68 38 Z" fill="#f4cad0" opacity=".95" transform="rotate(144 50 50)"/>
+        <path d="M68 38 Q60 40 56 48 Q58 53 64 51 Q72 46 68 38 Z" fill="#f4cad0" opacity=".95" transform="rotate(216 50 50)"/>
+        <path d="M68 38 Q60 40 56 48 Q58 53 64 51 Q72 46 68 38 Z" fill="#f4cad0" opacity=".95" transform="rotate(288 50 50)"/>
+        <!-- 切り込み -->
+        <path d="M50 25 L50 33" stroke="#e8b4b8" stroke-width="1.2" fill="none"/>
+        <!-- 中央 -->
+        <circle cx="50" cy="50" r="4" fill="#fef0e6"/>
+        <!-- おしべ -->
+        <circle cx="50" cy="46" r="1" fill="#d18a8f"/>
+        <circle cx="53" cy="49" r="1" fill="#d18a8f"/>
+        <circle cx="47" cy="49" r="1" fill="#d18a8f"/>
+        <circle cx="51" cy="53" r="1" fill="#d18a8f"/>
+        <circle cx="49" cy="53" r="1" fill="#d18a8f"/>
+      </g>
+    </symbol>
+
+    <!-- 小枝 -->
+    <symbol id="branch" viewBox="0 0 100 100">
+      <g fill="none" stroke="#94a87a" stroke-width="1.2" stroke-linecap="round">
+        <path d="M20 80 Q35 65 50 50 Q60 40 75 25"/>
+        <path d="M40 60 Q35 55 30 52" />
+        <path d="M55 45 Q60 42 65 42" />
+        <path d="M30 70 Q26 68 22 68" />
+      </g>
+      <ellipse cx="30" cy="52" rx="3" ry="1.5" fill="#94a87a" transform="rotate(-30 30 52)" opacity=".8"/>
+      <ellipse cx="65" cy="42" rx="3" ry="1.5" fill="#94a87a" transform="rotate(20 65 42)" opacity=".8"/>
+      <ellipse cx="22" cy="68" rx="2.5" ry="1.2" fill="#94a87a" transform="rotate(-40 22 68)" opacity=".8"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<!-- ============================================================
+     ヘッダー
+     ============================================================ -->
+<header>
+  <div class="logo">
+    美夜<span class="en">miyo</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#about">プロフィール</a></li>
+      <li><a href="#spots">スポット</a></li>
+      <li><a href="#pricing">料金</a></li>
+      <li><a href="#costume">衣装</a></li>
+      <li><a href="#reservation">予約</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     ヒーロー
+     ============================================================ -->
+<section class="hero">
+  <div class="deco-flower deco-1" style="--r:-15deg"><svg><use href="#rose"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:20deg"><svg><use href="#nemophila"/></svg></div>
+  <div class="deco-flower deco-3"><svg><use href="#sakura"/></svg></div>
+
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="vertical-mark">被写体活動</div>
+        <h1>
+          一瞬の<span class="accent">煌めき</span>を、<br>
+          一枚の物語に。
+        </h1>
+        <span class="name-en">— miyo's portrait sessions —</span>
+        <p class="lead">
+          和装、コスプレ、そしてあなたの世界観に寄り添う一枚を。<br>
+          百を超える衣装の中から、お気に入りの装いを纏って<br>
+          ひとときの撮影会へお越しください。
+        </p>
+        <div class="cta-row">
+          <a href="#reservation" class="btn btn-primary">予約する</a>
+          <a href="#costume" class="btn btn-ghost">衣装を見る</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="frame">
+          <div class="placeholder">
+            <div class="ja">美夜</div>
+            <div class="en">miyo</div>
+          </div>
+          <!-- メイン画像を入れる場合は↑のplaceholderを<img>に差し替え -->
+        </div>
+        <div class="stamp">撮影会<br>受付中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about" class="about">
+  <div class="deco-flower deco-1" style="--r:25deg"><svg><use href="#rose"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:-20deg"><svg><use href="#nemophila"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Profile</span>
+      <h2>美夜について</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="ph">花</div>
+      </div>
+
+      <div class="about-text">
+        <h3>花を愛し、和を纏う。<br>あなたのレンズに寄り添う一日を。</h3>
+        <p>
+          はじめまして、美夜（miyo）と申します。<br>
+          和装、コスプレ、季節の衣装を中心に被写体活動をしております。
+        </p>
+        <p>
+          バラやネモフィラなど花のある景色や、四季折々の情景の中で、
+          カメラマン様と一緒に「その瞬間にしか生まれない物語」を作っていけたらと思っています。
+          安心して心地よく撮影できる空間づくりを大切にしています。
+        </p>
+
+        <div class="about-meta">
+          <dl>
+            <dt>活動名</dt>
+            <dd>美夜（miyo）</dd>
+            <dt>ジャンル</dt>
+            <dd>和装・コスプレ・ポートレート</dd>
+            <dt>衣装数</dt>
+            <dd>100着以上（随時更新）</dd>
+            <dt>SNS</dt>
+            <dd><a href="https://www.instagram.com/lagdol_/?hl=ja" target="_blank" rel="noopener" style="color:var(--sakura-deep); border-bottom:1px solid var(--sakura);">Instagram @lagdol_</a></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SPOTS（気になっている撮影スポット）
+     ============================================================ -->
+<section id="spots" class="spots">
+  <div class="deco-flower deco-1" style="--r:18deg"><svg><use href="#sakura"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:-25deg"><svg><use href="#nemophila"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Favorite Spots</span>
+      <h2>気になるスポット</h2>
+    </div>
+
+    <p class="spots-intro">
+      美夜が今、行ってみたい・撮影してみたい場所をご紹介します。<br>
+      季節や気分で更新しています。撮影地のご相談にぜひお役立てください。
+    </p>
+
+    <div class="spots-grid" id="spots-grid">
+      <!-- JSで描画 -->
+      <div class="spots-loading">読み込み中…</div>
+    </div>
+
+    <div class="spots-edit-trigger">
+      <button type="button" id="spots-edit-open" aria-label="管理者用：スポットを編集">
+        <span class="ico">✎</span> miyoさん専用：スポットを編集
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section id="pricing" class="pricing">
+  <div class="deco-flower deco-1"><svg><use href="#sakura"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:40deg"><svg><use href="#rose"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Pricing</span>
+      <h2>撮影料金</h2>
+    </div>
+
+    <div class="price-card">
+      <div class="label">— Standard Plan —</div>
+      <div class="amount">5,000<span class="yen">円</span><span class="tax">／税込</span></div>
+      <div class="duration">2時間（衣装上下1セット込み）</div>
+
+      <div class="divider"></div>
+
+      <div class="options">
+        <h4>追加オプション</h4>
+        <ul>
+          <li>衣装追加（1着ごと）<span class="plus">＋ 1,000円</span></li>
+          <li>動画撮影・録音<span class="plus">許可制（要相談）</span></li>
+        </ul>
+      </div>
+
+      <p style="text-align:center; margin-top: 28px; font-size: 13px; color: var(--sumi-soft); letter-spacing:.05em;">
+        ※お支払いは事前決済（Stripe）にて承ります<br>
+        ※衣装の追加リクエストは下記ページよりお選びいただけます
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COSTUME（衣装リクエスト）
+     ============================================================ -->
+<section id="costume" class="costume">
+  <div class="deco-flower deco-1" style="--r:-30deg"><svg><use href="#rose"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:15deg"><svg><use href="#nemophila"/></svg></div>
+  <div class="deco-flower deco-3"><svg><use href="#sakura"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Costume List</span>
+      <h2>衣装リクエスト</h2>
+    </div>
+
+    <p class="costume-intro">
+      事前に衣装をお選びいただくことで、当日のスムーズな進行が可能になります。<br>
+      気になる衣装にチェックを入れて、ご予約フォームよりリクエストをお送りください。<br>
+      <span style="color:var(--sakura-deep);">※基本料金には上下1セットが含まれます。2着目以降は1着につき+1,000円となります。</span>
+    </p>
+
+    <!-- カテゴリーフィルタ -->
+    <div class="category-tabs" id="category-tabs">
+      <button class="active" data-category="all">すべて</button>
+      <button data-category="kimono">和装</button>
+      <button data-category="cosplay">コスプレ</button>
+      <button data-category="dress">ドレス</button>
+      <button data-category="casual">カジュアル</button>
+      <button data-category="other">その他</button>
+    </div>
+
+    <!-- 衣装グリッド -->
+    <div class="costume-grid" id="costume-grid"></div>
+
+    <!-- 選択状態のフッターバー -->
+    <div class="selection-bar" id="selection-bar" style="display:none;">
+      <div class="info-block">
+        <div class="count">選択中：<strong id="selected-count">0</strong>着</div>
+        <div class="total">追加料金 <strong id="extra-fee">¥0</strong></div>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="clear" onclick="clearSelection()">選択をクリア</button>
+        <button onclick="goToReservation()">予約に進む →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     注意事項
+     ============================================================ -->
+<section id="notice" class="notice">
+  <div class="deco-flower deco-1" style="--r:20deg"><svg><use href="#rose"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:-15deg"><svg><use href="#nemophila"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Notice</span>
+      <h2>撮影会のお願い</h2>
+    </div>
+
+    <p class="notice-intro">
+      ご参加いただく皆さまに、安心して楽しく撮影していただけるよう<br>
+      下記内容のご確認をお願いいたします。
+    </p>
+
+    <ol class="notice-list">
+      <li>身分証のご提示をお願いする場合がございます。</li>
+      <li>撮影データの商用利用・無断販売は禁止となります。</li>
+      <li>SNS掲載時は、過度な加工やイメージを損なう編集はご遠慮ください。</li>
+      <li>モデルが不快に感じるポージング指定、接触行為、距離の近い撮影は禁止です。</li>
+      <li>動画撮影、録音、ライブ配信等は禁止とさせていただきます（許可制の場合あり）。</li>
+      <li>他参加者様へのご配慮をお願いいたします。</li>
+      <li>撮影データは一定期間内でのお渡し・掲載をお願いする場合がございます。</li>
+      <li>撮影データのAI利用、二次配布等はご遠慮ください。</li>
+      <li>遅刻、無断キャンセルはご遠慮ください。キャンセルにつきましては、事前のご連絡をお願いいたします。</li>
+      <li>進行の妨げやマナー違反が見られた場合はご参加をお断りする場合がございます。</li>
+      <li>天候や状況により、内容変更または中止となる場合がございます。</li>
+      <li>当日の進行状況により、撮影時間が前後する場合がございます。</li>
+      <li>体調不良等がある場合は、無理をせず事前にご相談ください。</li>
+      <li>撮影データ掲載時、タグ付け、撮影会参加の記載をよろしくお願いいたします。</li>
+    </ol>
+
+    <p class="notice-message">
+      お互いに心地よい空間で、<br>
+      素敵なお写真を一緒に作れたら嬉しいです。<br>
+      <span class="sakura-icon">❀</span> ご理解・ご協力のほど、よろしくお願いいたします <span class="sakura-icon">❀</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RESERVATION
+     ============================================================ -->
+<section id="reservation" class="reservation">
+  <div class="deco-flower deco-1"><svg><use href="#sakura"/></svg></div>
+  <div class="deco-flower deco-2" style="--r:35deg"><svg><use href="#rose"/></svg></div>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">Reservation</span>
+      <h2>ご予約フォーム</h2>
+    </div>
+
+    <form class="form-wrapper" id="reservation-form" onsubmit="handleSubmit(event)">
+      <div class="form-grid">
+        <div class="form-row">
+          <label>お名前<span class="req">必須</span></label>
+          <input type="text" name="name" required placeholder="山田 太郎">
+        </div>
+        <div class="form-row">
+          <label>カメラマン名 / 屋号<span class="req">必須</span></label>
+          <input type="text" name="photographer" required placeholder="撮影者名">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label>メールアドレス<span class="req">必須</span></label>
+          <input type="email" name="email" required placeholder="example@mail.com">
+        </div>
+        <div class="form-row">
+          <label>電話番号</label>
+          <input type="tel" name="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label>ご希望日時<span class="req">必須</span></label>
+          <input type="datetime-local" name="datetime" required>
+        </div>
+        <div class="form-row">
+          <label>撮影場所のご希望</label>
+          <input type="text" name="location" placeholder="例：スタジオ名 / 公園名など">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>選択中の衣装リクエスト</label>
+        <div id="selected-costumes-display" style="font-size:13px; color: var(--sumi-soft); padding: 10px 14px; background: var(--bg); border: 1px dashed var(--line); border-radius: 3px; min-height: 44px;">
+          まだ衣装が選択されていません
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>その他ご要望・撮影テーマ</label>
+        <textarea name="message" placeholder="撮影のテーマやイメージ、ご要望などお気軽にお書きください。"></textarea>
+      </div>
+
+      <!-- 料金サマリー -->
+      <div class="form-summary">
+        <h4>— ご請求金額の確認 —</h4>
+        <div class="row">
+          <span>基本料金（2時間・衣装1セット込み）</span>
+          <span>¥5,000</span>
+        </div>
+        <div class="row" id="summary-extra-row" style="display:none;">
+          <span>追加衣装 <span id="summary-extra-count">0</span>着</span>
+          <span id="summary-extra-amount">¥0</span>
+        </div>
+        <div class="row total">
+          <span>合計</span>
+          <span id="summary-total">¥5,000</span>
+        </div>
+      </div>
+
+      <div class="agreement">
+        <input type="checkbox" id="agree" required>
+        <label for="agree" style="font-size:13px; letter-spacing:.05em;">
+          上記の<a href="#notice" style="color:var(--sakura-deep); border-bottom:1px solid var(--sakura);">「撮影会のお願い」</a>を確認し、同意の上で予約を申し込みます。
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">
+        予約してお支払いに進む
+      </button>
+      <p class="stripe-note">
+        <span class="lock">🔒</span> 決済は Stripe による安全な事前決済です
+      </p>
+    </form>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="logo">美夜</div>
+    <div class="logo-en">miyo</div>
+
+    <div class="sns">
+      <a href="https://www.instagram.com/lagdol_/?hl=ja" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.012 4.85.07 1.17.054 1.8.249 2.23.413.56.218.96.479 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63c-.79.31-1.46.72-2.13 1.39C1.34 2.69.93 3.36.62 4.15.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.55 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.28 1.64.49 2.91.55C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.55.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.28-.76.49-1.64.55-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.55-2.91-.31-.79-.72-1.46-1.39-2.13C21.31 1.34 20.64.93 19.85.62c-.76-.28-1.64-.49-2.91-.55C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+      </a>
+    </div>
+
+    <p class="copy">© miyo. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     スポット編集モーダル（管理者用）
+     ============================================================ -->
+<div class="spots-modal" id="spots-modal" role="dialog" aria-modal="true" aria-labelledby="spots-modal-title">
+  <div class="panel">
+    <div class="head">
+      <h3 id="spots-modal-title">スポットを編集</h3>
+      <button type="button" class="close" id="spots-modal-close" aria-label="閉じる">×</button>
+    </div>
+
+    <div class="auth">
+      <label for="spots-pw">編集パスワード</label>
+      <input type="password" id="spots-pw" placeholder="パスワードを入力" autocomplete="current-password">
+      <div class="auth-error" id="spots-auth-error"></div>
+      <div class="actions">
+        <button type="button" class="cancel" id="spots-auth-cancel">キャンセル</button>
+        <button type="button" class="save" id="spots-auth-submit">ログイン</button>
+      </div>
+    </div>
+
+    <div class="editor">
+      <p style="font-size:12px; color:var(--sumi-soft); line-height:1.8; margin-bottom: 18px;">
+        各スポットの「場所の名前」「リンクURL」「写真URL」を入力してください。<br>
+        空欄のままでも保存できます（その項目は非表示になります）。
+      </p>
+      <div id="spots-editor-rows"></div>
+      <div class="save-msg" id="spots-save-msg"></div>
+      <div class="actions">
+        <button type="button" class="cancel" id="spots-edit-cancel">閉じる</button>
+        <button type="button" class="save" id="spots-edit-save">保存する</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ===========================================================
+   設定 — 本番運用前にここを書き換える
+   -----------------------------------------------------------
+   stripePaymentLinkUrl: Stripe Payment Link の URL を入れると
+                         予約完了時に自動で開きます。空欄の場合は
+                         mailto によるメール送信フォールバックで動作。
+   contactEmail        : 問い合わせ・予約受付用のメールアドレス
+   =========================================================== */
+window.MIYO_CONFIG = window.MIYO_CONFIG || {
+  stripePaymentLinkUrl: '',                    // 例: 'https://buy.stripe.com/xxxxxxxxxxxx'
+  contactEmail:         'miyo.booking@example.com'
+};
+
+
+/* ===========================================================
+   衣装データ
+   ※ 実際に運用する際は image: の URL を本物のリサイズ済画像に
+     差し替えてください。 200着分のテンプレートを自動生成します。
+   =========================================================== */
+const CATEGORY_LABELS = {
+  kimono:  '和装',
+  cosplay: 'コスプレ',
+  dress:   'ドレス',
+  casual:  'カジュアル',
+  other:   'その他'
+};
+
+// === 衣装リスト（200着分のサンプル） ===
+// 後から各 image を /images/costume/001.jpg のように差し替えるだけでOK
+const COSTUMES = [];
+
+// 和装 60着
+const kimonoNames = [
+  '黒地金彩振袖','桜色振袖','藍染江戸小紋','椿柄訪問着','白無垢','色打掛・朱',
+  '緋袴と白衣','紫地雲取り着物','水色花柄浴衣','紺地朝顔浴衣','深緑・梅文様',
+  '金襴帯の黒留袖','薄紅・牡丹小紋','夏絽の白着物','桔梗柄お召し','市松文様着物',
+  '紅葉柄訪問着','鶴文様の振袖','白地桜浴衣','千鳥格子小紋','雪輪文様着物',
+  '黒地桜花振袖','藤色花鳥訪問着','茜色椿小紋','水墨柄お召し','金魚柄浴衣',
+  '紫陽花柄浴衣','向日葵柄浴衣','撫子柄浴衣','蝶柄訪問着','源氏香文様着物',
+  '麻の葉文様小紋','七宝文様訪問着','青海波文様着物','立涌文様お召し','流水柄訪問着',
+  '雲取り柄振袖','吉祥文様訪問着','花車文様着物','扇面柄訪問着','貝桶文様振袖',
+  '熨斗目文様着物','宝尽くし振袖','椿と雪輪の小紋','蝶と桜の振袖','鼓文様着物',
+  '御所車柄振袖','鳳凰文様訪問着','八重桜の振袖','枝垂れ桜の小紋','薔薇柄訪問着',
+  'ネモフィラ色の浴衣','向日葵畑の浴衣','薄紫藤の訪問着','白椿の振袖','薄紅梅の小紋',
+  '金魚と水草の浴衣','花火柄の浴衣','団扇柄浴衣','市松紗綾形着物'
+];
+
+// コスプレ 70着
+const cosplayNames = [
+  'メイド服・白黒','メイド服・桜','学園制服セーラー','学園制服ブレザー','チャイナドレス・赤',
+  'チャイナドレス・黒','ナース服','看護師ロング','バニーガール・黒','バニーガール・白',
+  'ゴスロリ・黒','ゴスロリ・白','和ロリ・桜','体操服・赤','体操服・青',
+  '巫女服・伝統','巫女服・モダン','ミニ巫女','魔女コスチューム','エンジェル衣装',
+  'デビル衣装','ファンタジードレス白','ファンタジードレス黒','レースクイーン','フライト',
+  'スチームパンク','ミリタリー風','ナイトドレス','ボディコン','フリル制服',
+  'ベビードール白','ベビードール黒','メイド・ヴィクトリアン','洋館メイド','カフェメイド',
+  '王女ドレス','妖精コス','エルフ衣装','吸血鬼風ドレス','黒猫コス',
+  '白猫コス','うさぎ耳セット','和猫コス','ピエロ衣装','チアリーダー赤',
+  'チアリーダー紺','ジャージ赤','ジャージ青','スク水紺','スク水白',
+  'パイレーツ風','プリンセス・ピンク','プリンセス・水色','プリンセス・黒','人魚姫風',
+  'シスター衣装','聖騎士風','和風騎士','刀剣風和装','戦国姫装束',
+  '忍者装束・黒','忍者装束・赤','くノ一','陰陽師風','花魁風衣装',
+  '舞妓風衣装','ロリィタ・甘','ロリィタ・クラシック','ロリィタ・ゴシック','ロリィタ・パンク',
+  '魔法少女ピンク'
+];
+
+// ドレス 30着
+const dressNames = [
+  'ホワイトロングドレス','ブラックイブニング','レッドカクテル','ネイビーシフォン','エメラルドサテン',
+  'ベージュレース','ネモフィラブルードレス','ローズピンクドレス','シャンパンゴールド','パープルサテン',
+  'ミントグリーン','ブラッシュピンク','バーガンディ','チャコール','ペールラベンダー',
+  'アイボリーチュール','クリームレース','コーラルピンク','ダスティブルー','テラコッタ',
+  'ピーチピンク','プラチナホワイト','ロイヤルブルー','フォレストグリーン','ヌード',
+  'モーブピンク','スカイブルー','ライラック','ペールイエロー','ミスティローズ'
+];
+
+// カジュアル 25着
+const casualNames = [
+  '白ワンピース','花柄ワンピ','デニムシャツ','チェックスカート','ニットセーター',
+  'パーカーコーデ','カーディガン','ロングTシャツ','フレアスカート','プリーツスカート',
+  'オーバーオール','ワイドパンツ','ハイネック','タートルネック','スウェット',
+  'ボーダーシャツ','カットソー','チノパン','ジャンパースカート','コーデュロイ',
+  'ベレー帽セット','麦わら帽子セット','カジュアル和小物','コットンブラウス','リネンワンピ'
+];
+
+// その他 15着
+const otherNames = [
+  '水着・赤','水着・白','水着・花柄','ビキニ・ネイビー','タンキニ・ピンク',
+  'ランジェリー風白','ランジェリー風黒','ヨガウェア','ボクシング風','スポーツブラセット',
+  'バレエ衣装','ダンス衣装','フラメンコ風','チアコスチューム','体操レオタード'
+];
+
+const buildCategory = (names, cat) => names.forEach((n, i) => {
+  COSTUMES.push({
+    id: `${cat}_${String(i+1).padStart(3,'0')}`,
+    name: n,
+    category: cat,
+    image: '' // 空欄。設定するとimg表示、空ならプレースホルダー表示
+  });
+});
+
+buildCategory(kimonoNames, 'kimono');
+buildCategory(cosplayNames, 'cosplay');
+buildCategory(dressNames, 'dress');
+buildCategory(casualNames, 'casual');
+buildCategory(otherNames, 'other');
+
+
+/* ===========================================================
+   状態管理
+   =========================================================== */
+const STORAGE_KEY = 'miyo:selectedCostumes';
+
+let selectedIds = new Set(loadSelection());
+let activeCategory = 'all';
+
+const EXTRA_PRICE = 1000; // 1着追加ごとの料金
+const BASE_PRICE  = 5000;
+
+const yen = n => '¥' + n.toLocaleString('ja-JP');
+
+function loadSelection(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const ids = JSON.parse(raw);
+    return Array.isArray(ids) ? ids : [];
+  } catch (_) { return []; }
+}
+function saveSelection(){
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...selectedIds])); } catch (_) {}
+}
+
+
+/* ===========================================================
+   描画
+   =========================================================== */
+function renderCostumes(){
+  const grid = document.getElementById('costume-grid');
+  grid.innerHTML = '';
+
+  const list = activeCategory === 'all'
+    ? COSTUMES
+    : COSTUMES.filter(c => c.category === activeCategory);
+
+  list.forEach((item, idx) => {
+    const card = document.createElement('div');
+    card.className = 'costume-card' + (selectedIds.has(item.id) ? ' selected' : '');
+    card.dataset.id = item.id;
+
+    const num = String(idx + 1).padStart(3, '0');
+    const ph = item.image
+      ? `<img src="${item.image}" alt="${item.name}" loading="lazy">`
+      : `<div class="placeholder-img">${item.name.charAt(0)}</div>`;
+
+    card.innerHTML = `
+      <div class="check">✓</div>
+      ${ph}
+      <div class="info">
+        <span class="num">No.${num} / ${CATEGORY_LABELS[item.category]}</span>
+        ${item.name}
+      </div>
+    `;
+
+    card.addEventListener('click', () => toggleCostume(item.id));
+    grid.appendChild(card);
+  });
+}
+
+function toggleCostume(id){
+  if (selectedIds.has(id)) selectedIds.delete(id);
+  else selectedIds.add(id);
+  saveSelection();
+  renderCostumes();
+  updateSelectionBar();
+  updateFormSummary();
+}
+
+function updateSelectionBar(){
+  const bar = document.getElementById('selection-bar');
+  const count = selectedIds.size;
+  if (count > 0){
+    bar.style.display = 'flex';
+    document.getElementById('selected-count').textContent = count;
+    // 1着目は基本料金に含まれるので、追加料金は (count-1) × 1000円
+    // ただしユーザーが0着のときは0円、1着のときは0円、2着目から+1000ずつ
+    const extra = Math.max(0, count - 1) * EXTRA_PRICE;
+    document.getElementById('extra-fee').textContent = yen(extra);
+  } else {
+    bar.style.display = 'none';
+  }
+}
+
+function updateFormSummary(){
+  const display = document.getElementById('selected-costumes-display');
+  const count = selectedIds.size;
+
+  if (count === 0){
+    display.innerHTML = 'まだ衣装が選択されていません';
+  } else {
+    const items = [...selectedIds].map(id => {
+      const c = COSTUMES.find(x => x.id === id);
+      return `<span style="display:inline-block; padding:3px 10px; margin:3px 4px 3px 0; background: var(--bg-paper); border:1px solid var(--sakura); color: var(--sakura-deep); border-radius:30px; font-size:12px;">${c.name}</span>`;
+    }).join('');
+    display.innerHTML = items;
+  }
+
+  const extraCount = Math.max(0, count - 1);
+  const extraAmount = extraCount * EXTRA_PRICE;
+  const total = BASE_PRICE + extraAmount;
+
+  const extraRow = document.getElementById('summary-extra-row');
+  if (extraCount > 0){
+    extraRow.style.display = 'flex';
+    document.getElementById('summary-extra-count').textContent = extraCount;
+    document.getElementById('summary-extra-amount').textContent = yen(extraAmount);
+  } else {
+    extraRow.style.display = 'none';
+  }
+  document.getElementById('summary-total').textContent = yen(total);
+}
+
+function clearSelection(){
+  selectedIds.clear();
+  saveSelection();
+  renderCostumes();
+  updateSelectionBar();
+  updateFormSummary();
+}
+
+function goToReservation(){
+  document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+}
+
+
+/* ===========================================================
+   カテゴリーフィルタ
+   =========================================================== */
+document.getElementById('category-tabs').addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  document.querySelectorAll('#category-tabs button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCategory = btn.dataset.category;
+  renderCostumes();
+});
+
+
+/* ===========================================================
+   フォーム送信 → Stripe決済 もしくは mailtoフォールバック
+   =========================================================== */
+function handleSubmit(e){
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+
+  const selectedItems = [...selectedIds].map(id => {
+    const c = COSTUMES.find(x => x.id === id);
+    return `${CATEGORY_LABELS[c.category]} - ${c.name}`;
+  });
+
+  const extraCount = Math.max(0, selectedIds.size - 1);
+  const total = BASE_PRICE + extraCount * EXTRA_PRICE;
+
+  const summary =
+    '【ご予約内容】\n\n' +
+    `お名前：${data.name}\n` +
+    `カメラマン名：${data.photographer}\n` +
+    `メール：${data.email}\n` +
+    (data.tel ? `電話：${data.tel}\n` : '') +
+    `ご希望日時：${data.datetime}\n` +
+    (data.location ? `撮影場所：${data.location}\n` : '') +
+    `\n衣装（${selectedItems.length}着）：\n` +
+    (selectedItems.length ? selectedItems.map(s => '  ・' + s).join('\n') : '  （衣装の選択なし）') +
+    (data.message ? `\n\nご要望：\n${data.message}` : '') +
+    `\n\n合計金額：${yen(total)}（基本${yen(BASE_PRICE)} + 追加${extraCount}着）`;
+
+  console.log('予約データ:', { ...data, costumes: selectedItems, total });
+
+  const cfg = window.MIYO_CONFIG || {};
+
+  // Stripe Payment Link が設定されていれば、確認の上で決済画面に遷移
+  if (cfg.stripePaymentLinkUrl) {
+    if (!confirm(summary + '\n\n上記内容で予約を確定し、Stripeの決済画面に進みます。よろしいですか？')) return;
+
+    // 予約内容はlocalStorageに残しておき、決済完了後に運営側で照合できるようにする
+    try {
+      localStorage.setItem('miyo:lastReservation', JSON.stringify({
+        ...data, costumes: selectedItems, total, at: new Date().toISOString()
+      }));
+    } catch (_) { /* noop */ }
+
+    // Payment Linkに対応するクエリのみ付与（メールはStripe側でも入力フォームあり）
+    const url = new URL(cfg.stripePaymentLinkUrl);
+    if (data.email) url.searchParams.set('prefilled_email', data.email);
+    window.location.href = url.toString();
+    return;
+  }
+
+  // フォールバック：Stripe未設定時は予約内容をmailtoで送信
+  const to = cfg.contactEmail || '';
+  const subject = `【撮影会ご予約】${data.name || '名前未入力'} 様 / ${data.datetime || '日時未定'}`;
+  const body = summary + '\n\n— このメールはLPフォームから自動生成されました —';
+  const mailtoUrl = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  alert(summary + '\n\n決済リンクが未設定のため、メールでのご予約に切り替えます。\nメーラーが起動しますので、内容を確認のうえご送信ください。');
+  window.location.href = mailtoUrl;
+}
+
+
+/* ===========================================================
+   スクロールアニメ
+   =========================================================== */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+
+/* ===========================================================
+   気になるスポット
+   =========================================================== */
+const SPOTS_COUNT = 5;
+const SPOTS_DEFAULT = [
+  { name: '', url: '', image: '' },
+  { name: '', url: '', image: '' },
+  { name: '', url: '', image: '' },
+  { name: '', url: '', image: '' },
+  { name: '', url: '', image: '' }
+];
+let currentSpots = SPOTS_DEFAULT.slice();
+let spotsAuthToken = '';
+
+const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[c]));
+
+function normalizeSpots(arr){
+  const out = [];
+  for (let i = 0; i < SPOTS_COUNT; i++){
+    const s = (arr && arr[i]) || {};
+    out.push({
+      name:  String(s.name  ?? '').slice(0, 80),
+      url:   String(s.url   ?? '').slice(0, 500),
+      image: String(s.image ?? '').slice(0, 500)
+    });
+  }
+  return out;
+}
+
+function isSafeUrl(u){
+  if (!u) return false;
+  try {
+    const url = new URL(u);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch (_){ return false; }
+}
+
+async function loadSpots(){
+  try {
+    const res = await fetch('/api/spots', { cache: 'no-store' });
+    if (!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+    currentSpots = normalizeSpots(data.spots);
+  } catch (e) {
+    currentSpots = SPOTS_DEFAULT.slice();
+  }
+  renderSpots();
+}
+
+function renderSpots(){
+  const grid = document.getElementById('spots-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  currentSpots.forEach((spot, idx) => {
+    const card = document.createElement('div');
+    const empty = !spot.name && !spot.url && !spot.image;
+    card.className = 'spot-card' + (empty ? ' empty' : '');
+
+    const photoHtml = isSafeUrl(spot.image)
+      ? `<img src="${escapeHtml(spot.image)}" alt="${escapeHtml(spot.name || 'spot')}" loading="lazy" referrerpolicy="no-referrer">`
+      : `<div class="ph">${String(idx + 1).padStart(2,'0')}</div>`;
+
+    const linkHtml = isSafeUrl(spot.url)
+      ? `<a class="link" href="${escapeHtml(spot.url)}" target="_blank" rel="noopener noreferrer">
+           詳しく見る
+           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
+         </a>`
+      : '';
+
+    const nameHtml = spot.name
+      ? `<div class="name">${escapeHtml(spot.name)}</div>`
+      : `<div class="name" style="color:var(--sumi-soft); opacity:.6;">未設定</div>`;
+
+    card.innerHTML = `
+      <div class="photo">${photoHtml}</div>
+      <div class="body">
+        ${nameHtml}
+        ${linkHtml}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+/* === 編集モーダル === */
+const spotsModal      = document.getElementById('spots-modal');
+const spotsPwInput    = document.getElementById('spots-pw');
+const spotsAuthError  = document.getElementById('spots-auth-error');
+const spotsEditorRows = document.getElementById('spots-editor-rows');
+const spotsSaveMsg    = document.getElementById('spots-save-msg');
+const spotsSaveBtn    = document.getElementById('spots-edit-save');
+
+function openSpotsModal(){
+  spotsModal.classList.add('open');
+  spotsModal.classList.remove('authed');
+  spotsAuthError.textContent = '';
+  spotsSaveMsg.textContent = '';
+  spotsPwInput.value = '';
+  setTimeout(() => spotsPwInput.focus(), 50);
+}
+function closeSpotsModal(){
+  spotsModal.classList.remove('open', 'authed');
+  spotsAuthToken = '';
+}
+
+function renderEditorRows(){
+  spotsEditorRows.innerHTML = '';
+  currentSpots.forEach((spot, idx) => {
+    const row = document.createElement('div');
+    row.className = 'spot-edit-row';
+    row.innerHTML = `
+      <div class="row-head">SPOT ${String(idx + 1).padStart(2,'0')}</div>
+      <div class="field">
+        <label>場所の名前</label>
+        <input type="text" data-idx="${idx}" data-key="name" value="${escapeHtml(spot.name)}" maxlength="80" placeholder="例：京都・嵐山 竹林の小径">
+      </div>
+      <div class="field">
+        <label>リンクURL（Google Maps、公式サイトなど）</label>
+        <input type="url" data-idx="${idx}" data-key="url" value="${escapeHtml(spot.url)}" maxlength="500" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>写真URL</label>
+        <input type="url" data-idx="${idx}" data-key="image" value="${escapeHtml(spot.image)}" maxlength="500" placeholder="https://.../photo.jpg">
+        <div class="preview-img" data-preview="${idx}" style="background-image: url('${isSafeUrl(spot.image) ? escapeHtml(spot.image) : ''}')"></div>
+      </div>
+    `;
+    spotsEditorRows.appendChild(row);
+  });
+
+  // 入力で currentSpots を更新 + 画像プレビュー
+  spotsEditorRows.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', (e) => {
+      const idx = Number(e.target.dataset.idx);
+      const key = e.target.dataset.key;
+      currentSpots[idx][key] = e.target.value;
+      if (key === 'image') {
+        const prev = spotsEditorRows.querySelector(`[data-preview="${idx}"]`);
+        if (prev) prev.style.backgroundImage = isSafeUrl(e.target.value)
+          ? `url('${e.target.value.replace(/'/g, "\\'")}')` : '';
+      }
+    });
+  });
+}
+
+async function submitSpotsPassword(){
+  const pw = spotsPwInput.value.trim();
+  spotsAuthError.textContent = '';
+  if (!pw) { spotsAuthError.textContent = 'パスワードを入力してください'; return; }
+  // パスワードはまだ送らず、保存時に送信する形にする（不要な往復を減らす）
+  spotsAuthToken = pw;
+  spotsModal.classList.add('authed');
+  renderEditorRows();
+}
+
+async function saveSpots(){
+  spotsSaveBtn.disabled = true;
+  spotsSaveMsg.classList.remove('error');
+  spotsSaveMsg.textContent = '保存中…';
+  try {
+    const res = await fetch('/api/spots', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: spotsAuthToken, spots: currentSpots })
+    });
+    if (res.status === 401) {
+      spotsSaveMsg.classList.add('error');
+      spotsSaveMsg.textContent = 'パスワードが違います';
+      spotsModal.classList.remove('authed');
+      spotsAuthError.textContent = 'パスワードが違います';
+      return;
+    }
+    if (!res.ok) throw new Error('save failed');
+    const data = await res.json();
+    currentSpots = normalizeSpots(data.spots);
+    renderSpots();
+    spotsSaveMsg.textContent = '保存しました ✓';
+    setTimeout(() => { closeSpotsModal(); }, 800);
+  } catch (e) {
+    spotsSaveMsg.classList.add('error');
+    spotsSaveMsg.textContent = '保存に失敗しました。時間を置いてお試しください。';
+  } finally {
+    spotsSaveBtn.disabled = false;
+  }
+}
+
+document.getElementById('spots-edit-open').addEventListener('click', openSpotsModal);
+document.getElementById('spots-modal-close').addEventListener('click', closeSpotsModal);
+document.getElementById('spots-auth-cancel').addEventListener('click', closeSpotsModal);
+document.getElementById('spots-edit-cancel').addEventListener('click', closeSpotsModal);
+document.getElementById('spots-auth-submit').addEventListener('click', submitSpotsPassword);
+spotsPwInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitSpotsPassword(); });
+spotsSaveBtn.addEventListener('click', saveSpots);
+spotsModal.addEventListener('click', (e) => { if (e.target === spotsModal) closeSpotsModal(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && spotsModal.classList.contains('open')) closeSpotsModal();
+});
+
+
+/* ===========================================================
+   初期化
+   =========================================================== */
+renderCostumes();
+updateSelectionBar();
+updateFormSummary();
+loadSpots();
+</script>
+
+</body>
+</html>
