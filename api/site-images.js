@@ -77,7 +77,7 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'PUT') {
-    const expected = process.env.MIYO_EDIT_PASSWORD;
+    const expected = (process.env.MIYO_EDIT_PASSWORD || '').trim();
     if (!expected) {
       return res.status(500).json({ error: 'password not configured' });
     }
@@ -91,7 +91,8 @@ export default async function handler(req, res) {
     }
 
     const { password, siteImages } = body;
-    if (typeof password !== 'string' || password !== expected) {
+    const pwTrimmed = typeof password === 'string' ? password.trim() : '';
+    if (!pwTrimmed || pwTrimmed !== expected) {
       return res.status(401).json({ error: 'unauthorized' });
     }
 
