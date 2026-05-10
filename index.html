@@ -1786,6 +1786,46 @@ buildCategory(dressNames, 'dress');
 buildCategory(casualNames, 'casual');
 buildCategory(otherNames, 'other');
 
+/* ===========================================================
+   API から衣装データを取得（あれば上書き、無ければデフォルト維持）
+   =========================================================== */
+async function loadCostumesFromAPI(){
+  try {
+    const res = await fetch('/api/costumes', { cache: 'no-store' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!Array.isArray(data.costumes) || data.costumes.length === 0) return;
+
+    const VALID = ['kimono', 'cosplay', 'dress', 'casual', 'other'];
+    const valid = data.costumes.filter(c =>
+      c && typeof c.id === 'string' && c.id &&
+      typeof c.name === 'string' && c.name &&
+      VALID.includes(c.category)
+    );
+    if (valid.length === 0) return;
+
+    COSTUMES.length = 0;
+    valid.forEach(c => COSTUMES.push({
+      id: c.id,
+      name: c.name,
+      category: c.category,
+      image: typeof c.image === 'string' ? c.image : ''
+    }));
+
+    // selectedIds が現リストに無いIDを参照していたら削除（既存の挙動維持のため）
+    if (typeof selectedIds !== 'undefined'){
+      const validIds = new Set(COSTUMES.map(c => c.id));
+      let pruned = false;
+      for (const id of [...selectedIds]){
+        if (!validIds.has(id)){ selectedIds.delete(id); pruned = true; }
+      }
+      if (pruned && typeof saveSelection === 'function') saveSelection();
+    }
+  } catch (e) {
+    // 取得失敗時はデフォルトのまま
+  }
+}
+
 
 /* ===========================================================
    状態管理
@@ -2207,9 +2247,12 @@ document.addEventListener('keydown', (e) => {
 /* ===========================================================
    初期化
    =========================================================== */
-renderCostumes();
-updateSelectionBar();
-updateFormSummary();
+(async () => {
+  await loadCostumesFromAPI();
+  renderCostumes();
+  updateSelectionBar();
+  updateFormSummary();
+})();
 loadSpots();
 </script>
 
