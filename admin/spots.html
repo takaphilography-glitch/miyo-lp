@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>衣装管理 - miyo</title>
+<title>撮影スポット管理 - miyo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -39,36 +39,6 @@
   }
   .container{ max-width: 1200px; margin: 0 auto; }
 
-  /* ========== ナビ ========== */
-  .admin-nav{
-    display: flex; gap: 4px; flex-wrap: wrap;
-    margin-bottom: 14px;
-  }
-  .admin-nav a{
-    display: inline-flex; align-items: center;
-    padding: 8px 16px;
-    background: var(--bg-paper);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    text-decoration: none;
-    color: var(--sumi-soft);
-    font-size: 13px;
-    letter-spacing: .1em;
-    font-family: var(--sans);
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .admin-nav a:hover{
-    background: var(--bg);
-    color: var(--sumi);
-    border-color: var(--sumi-soft);
-  }
-  .admin-nav a.active{
-    background: var(--sumi);
-    color: var(--bg-paper);
-    border-color: var(--sumi);
-  }
-  .admin-nav a.active::before{ content: '❀ '; color: var(--sakura); }
-
   /* ========== ヘッダ ========== */
   header.app-head{
     background: var(--bg-paper);
@@ -98,6 +68,36 @@
     font-family: var(--italic);
     font-size: 16px;
   }
+
+  /* ========== ナビ ========== */
+  .admin-nav{
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .admin-nav a{
+    display: inline-flex; align-items: center;
+    padding: 8px 16px;
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--sumi-soft);
+    font-size: 13px;
+    letter-spacing: .1em;
+    font-family: var(--sans);
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .admin-nav a:hover{
+    background: var(--bg);
+    color: var(--sumi);
+    border-color: var(--sumi-soft);
+  }
+  .admin-nav a.active{
+    background: var(--sumi);
+    color: var(--bg-paper);
+    border-color: var(--sumi);
+  }
+  .admin-nav a.active::before{ content: '❀ '; color: var(--sakura); }
 
   /* ========== ボタン ========== */
   .btn{
@@ -180,29 +180,12 @@
     flex-wrap: wrap;
     align-items: center;
   }
-  .toolbar .filter{ display: flex; gap: 6px; flex-wrap: wrap; }
-  .toolbar .filter button{
-    padding: 6px 14px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    font-size: 12px;
-    cursor: pointer;
-    font-family: var(--sans);
-    color: var(--sumi-soft);
-    transition: background .2s, color .2s, border-color .2s;
-  }
-  .toolbar .filter button.active{
-    background: var(--sumi);
-    color: var(--bg-paper);
-    border-color: var(--sumi);
-  }
   .toolbar .search{
     padding: 7px 12px;
     border: 1px solid var(--line);
     border-radius: 3px;
     font-size: 13px;
-    width: 200px;
+    width: 240px;
     background: var(--bg);
     font-family: var(--sans);
   }
@@ -212,8 +195,8 @@
   /* ========== グリッド ========== */
   .grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
   }
   .card{
     position: relative;
@@ -222,6 +205,7 @@
     border-radius: 4px;
     overflow: hidden;
     transition: box-shadow .25s, border-color .2s;
+    display: flex; flex-direction: column;
   }
   .card:hover{ box-shadow: 0 8px 20px var(--shadow); }
   .card.dirty{ border-color: var(--sakura-deep); }
@@ -239,7 +223,7 @@
   }
 
   .card-img{
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/3;
     background: var(--bg-deep);
     position: relative;
     overflow: hidden;
@@ -277,36 +261,47 @@
     letter-spacing: .1em;
   }
 
-  .card-body{ padding: 12px; }
-  .card-body input,
-  .card-body select{
-    width: 100%;
-    padding: 7px 10px;
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    font-size: 13px;
-    margin-bottom: 8px;
-    background: var(--bg);
-    font-family: var(--sans);
-    color: var(--sumi);
-  }
-  .card-body input:focus,
-  .card-body select:focus{
-    outline: none;
-    border-color: var(--sakura-deep);
-  }
-  .card-actions{
-    display: flex; gap: 6px;
-  }
-  .card-actions .btn{ flex: 1; }
+  .card-body{ padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .card-id{
     font-family: var(--italic);
     font-style: italic;
     font-size: 11px;
     color: var(--sumi-soft);
-    margin-bottom: 6px;
     word-break: break-all;
   }
+  .field-label{
+    font-size: 10px;
+    color: var(--sumi-soft);
+    letter-spacing: .1em;
+    margin-bottom: -4px;
+    margin-top: 2px;
+  }
+  .card-body input,
+  .card-body textarea{
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 13px;
+    background: var(--bg);
+    font-family: var(--sans);
+    color: var(--sumi);
+    line-height: 1.6;
+  }
+  .card-body textarea{
+    resize: vertical;
+    min-height: 60px;
+  }
+  .card-body input:focus,
+  .card-body textarea:focus{
+    outline: none;
+    border-color: var(--sakura-deep);
+  }
+  .card-actions{
+    display: flex; gap: 6px;
+    margin-top: 6px;
+  }
+  .card-actions .btn{ flex: 1; }
 
   /* ========== 保存バー ========== */
   .save-bar{
@@ -324,10 +319,7 @@
     z-index: 10;
   }
   .save-bar.visible{ display: flex; }
-  .save-bar .info{
-    font-size: 13px;
-    letter-spacing: .05em;
-  }
+  .save-bar .info{ font-size: 13px; letter-spacing: .05em; }
   .save-bar .info .num{
     color: var(--sakura);
     margin: 0 4px;
@@ -373,7 +365,7 @@
     background: var(--bg-paper);
     padding: 28px;
     border-radius: 4px;
-    max-width: 420px;
+    max-width: 480px;
     width: 100%;
     border: 1px solid var(--line);
   }
@@ -391,7 +383,7 @@
     letter-spacing: .1em;
   }
   .modal input,
-  .modal select{
+  .modal textarea{
     width: 100%;
     padding: 9px 12px;
     border: 1px solid var(--line);
@@ -401,8 +393,9 @@
     font-family: var(--sans);
     color: var(--sumi);
   }
+  .modal textarea{ resize: vertical; min-height: 70px; line-height: 1.6; }
   .modal input:focus,
-  .modal select:focus{ outline: none; border-color: var(--sakura-deep); }
+  .modal textarea:focus{ outline: none; border-color: var(--sakura-deep); }
   .modal-actions{
     margin-top: 22px;
     display: flex; gap: 8px; justify-content: flex-end;
@@ -432,7 +425,7 @@
 
   @media (max-width: 600px){
     body{ padding: 12px; }
-    .grid{ grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .grid{ grid-template-columns: 1fr; gap: 12px; }
     .toolbar{ flex-direction: column; align-items: stretch; }
     .toolbar .search{ width: 100%; }
     .toolbar .spacer{ display: none; }
@@ -444,7 +437,7 @@
 
 <!-- ========== ログイン画面 ========== -->
 <div id="login-screen" class="login-box">
-  <h2>❀ 衣装管理</h2>
+  <h2>❀ 撮影スポット管理</h2>
   <p class="lead">パスワードを入力してください</p>
   <input type="password" id="password-input" placeholder="パスワード" autocomplete="current-password">
   <button class="btn btn-primary" style="width:100%;" id="login-btn">ログイン</button>
@@ -454,30 +447,22 @@
 <!-- ========== 管理画面 ========== -->
 <div id="admin-screen" class="container" style="display:none;">
   <nav class="admin-nav">
-    <a href="/admin/costumes.html" class="active">衣装管理</a>
-    <a href="/admin/spots.html">撮影スポット</a>
+    <a href="/admin/costumes.html">衣装管理</a>
+    <a href="/admin/spots.html" class="active">撮影スポット</a>
     <a href="/admin/site-images.html">サイト画像</a>
   </nav>
 
   <header class="app-head">
-    <h1>衣装管理</h1>
+    <h1>撮影スポット管理</h1>
     <div class="meta">
-      <span>合計 <span class="num" id="total-count">0</span>着</span>
-      <span>表示中 <span class="num" id="visible-count">0</span>着</span>
+      <span>合計 <span class="num" id="total-count">0</span>件</span>
+      <span>表示中 <span class="num" id="visible-count">0</span>件</span>
       <button class="btn btn-ghost btn-sm" id="logout-btn">ログアウト</button>
     </div>
   </header>
 
   <div class="toolbar">
-    <div class="filter" id="filter-tabs">
-      <button class="active" data-cat="all">すべて</button>
-      <button data-cat="kimono">和装</button>
-      <button data-cat="cosplay">コスプレ</button>
-      <button data-cat="dress">ドレス</button>
-      <button data-cat="casual">カジュアル</button>
-      <button data-cat="other">その他</button>
-    </div>
-    <input type="text" class="search" id="search-input" placeholder="衣装名で検索">
+    <input type="text" class="search" id="search-input" placeholder="スポット名・住所・駅で検索">
     <div class="spacer"></div>
     <button class="btn btn-primary" id="open-add-btn">+ 新規追加</button>
   </div>
@@ -485,7 +470,7 @@
   <div id="grid" class="grid"></div>
 
   <div class="empty" id="empty-state" style="display:none;">
-    <p>条件に一致する衣装がありません</p>
+    <p>条件に一致するスポットがありません</p>
     <button class="btn btn-primary" id="empty-add-btn">+ 新規追加</button>
   </div>
 
@@ -504,17 +489,15 @@
 <!-- ========== 新規追加モーダル ========== -->
 <div class="modal-bg" id="add-modal">
   <div class="modal">
-    <h3>❀ 新規衣装を追加</h3>
-    <label>衣装名</label>
-    <input type="text" id="new-name" placeholder="例：黒地金彩振袖" maxlength="80">
-    <label>カテゴリ</label>
-    <select id="new-category">
-      <option value="kimono">和装</option>
-      <option value="cosplay">コスプレ</option>
-      <option value="dress">ドレス</option>
-      <option value="casual">カジュアル</option>
-      <option value="other">その他</option>
-    </select>
+    <h3>❀ 新しい撮影スポットを追加</h3>
+    <label>スポット名 <span style="color:var(--danger);">*</span></label>
+    <input type="text" id="new-name" placeholder="例：京都・嵐山 竹林の小径" maxlength="80">
+    <label>住所</label>
+    <input type="text" id="new-address" placeholder="例：京都府京都市右京区嵯峨小倉山田淵山町" maxlength="200">
+    <label>最寄り駅</label>
+    <input type="text" id="new-station" placeholder="例：JR嵯峨嵐山駅 徒歩10分" maxlength="80">
+    <label>雰囲気の説明</label>
+    <textarea id="new-description" placeholder="例：朝の柔らかい光が差し込む竹林。和装での撮影に最適。" maxlength="500"></textarea>
     <p style="font-size:11px; color:var(--sumi-soft); margin-top:10px; letter-spacing:.05em;">
       画像は追加後にカードからアップロードできます
     </p>
@@ -527,30 +510,16 @@
 
 <script>
 /* ============================================================
-   ★ Cloudinary 設定（公開後に差し替え必須）★
-   Cloudinary Dashboard → 上部の Cloud Name をコピー
-   Settings → Upload → Add upload preset →
-     Signing Mode: Unsigned, Preset name: miyo_costumes
+   ★ Cloudinary 設定 ★
    ============================================================ */
 const CLOUDINARY_CLOUD_NAME    = 'dkjvy01pi';
 const CLOUDINARY_UPLOAD_PRESET = 'miyo_uploads';
 
-const VALID_CATEGORIES = ['kimono', 'cosplay', 'dress', 'casual', 'other'];
-const CATEGORY_LABELS = {
-  kimono:  '和装',
-  cosplay: 'コスプレ',
-  dress:   'ドレス',
-  casual:  'カジュアル',
-  other:   'その他'
-};
-
 /* ===== 状態 ===== */
 let password = '';
-let costumes = [];
-let originalCostumes = [];
-let activeCategory = 'all';
+let spots = [];
+let originalSpots = [];
 let searchKeyword = '';
-let cloudinaryWidget = null;
 
 /* ===========================================================
    ユーティリティ
@@ -561,8 +530,8 @@ function escapeHtml(s){
   ));
 }
 function deepClone(v){ return JSON.parse(JSON.stringify(v)); }
-function makeId(category){
-  return `${category}_${Date.now()}_${Math.random().toString(36).slice(2,6)}`;
+function makeId(){
+  return `spot_${Date.now()}_${Math.random().toString(36).slice(2,6)}`;
 }
 function showToast(msg, type){
   const old = document.querySelector('.toast');
@@ -575,9 +544,7 @@ function showToast(msg, type){
 }
 
 /* ===========================================================
-   ログイン
-   ＝ 取得した現データをそのまま PUT し直して認証チェック
-   （API側の挙動を変えずに、保存前に正しいパスワードか確認できる）
+   ログイン（取得→そのまま PUT で認証チェック）
    =========================================================== */
 async function attemptLogin(){
   const pw = document.getElementById('password-input').value.trim();
@@ -592,15 +559,15 @@ async function attemptLogin(){
   loginBtn.textContent = '確認中...';
 
   try {
-    const getRes = await fetch('/api/costumes', { cache: 'no-store' });
+    const getRes = await fetch('/api/spots', { cache: 'no-store' });
     if (!getRes.ok) throw new Error('GET failed');
     const getData = await getRes.json();
-    const current = Array.isArray(getData.costumes) ? getData.costumes : [];
+    const current = Array.isArray(getData.spots) ? getData.spots : [];
 
-    const verify = await fetch('/api/costumes', {
+    const verify = await fetch('/api/spots', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: pw, costumes: current })
+      body: JSON.stringify({ password: pw, spots: current })
     });
     if (verify.status === 401){
       errEl.textContent = 'パスワードが違います';
@@ -611,10 +578,12 @@ async function attemptLogin(){
       errEl.textContent = '接続エラー: ' + (body.error || verify.status);
       return;
     }
+    const verified = await verify.json();
+    const fresh = Array.isArray(verified.spots) ? verified.spots : current;
 
     password = pw;
-    costumes = deepClone(current);
-    originalCostumes = deepClone(current);
+    spots = deepClone(fresh);
+    originalSpots = deepClone(fresh);
     sessionStorage.setItem('miyo_admin_session', '1');
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('admin-screen').style.display = 'block';
@@ -637,15 +606,19 @@ function logout(){
 /* ===========================================================
    差分検出
    =========================================================== */
-function isItemDirty(c){
-  const orig = originalCostumes.find(o => o.id === c.id);
+function isItemDirty(s){
+  const orig = originalSpots.find(o => o.id === s.id);
   if (!orig) return true;
-  return orig.name !== c.name || orig.category !== c.category || (orig.image || '') !== (c.image || '');
+  return (orig.name        || '') !== (s.name        || '')
+      || (orig.address     || '') !== (s.address     || '')
+      || (orig.station     || '') !== (s.station     || '')
+      || (orig.image       || '') !== (s.image       || '')
+      || (orig.description || '') !== (s.description || '');
 }
 function getDirtyCount(){
   let n = 0;
-  for (const c of costumes) if (isItemDirty(c)) n++;
-  for (const o of originalCostumes) if (!costumes.find(c => c.id === o.id)) n++;
+  for (const s of spots) if (isItemDirty(s)) n++;
+  for (const o of originalSpots) if (!spots.find(s => s.id === o.id)) n++;
   return n;
 }
 
@@ -656,16 +629,18 @@ function render(){
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty-state');
 
-  let filtered = costumes;
-  if (activeCategory !== 'all'){
-    filtered = filtered.filter(c => c.category === activeCategory);
-  }
+  let filtered = spots;
   if (searchKeyword){
     const kw = searchKeyword.toLowerCase();
-    filtered = filtered.filter(c => c.name.toLowerCase().includes(kw));
+    filtered = filtered.filter(s =>
+      (s.name        || '').toLowerCase().includes(kw) ||
+      (s.address     || '').toLowerCase().includes(kw) ||
+      (s.station     || '').toLowerCase().includes(kw) ||
+      (s.description || '').toLowerCase().includes(kw)
+    );
   }
 
-  document.getElementById('total-count').textContent   = costumes.length;
+  document.getElementById('total-count').textContent   = spots.length;
   document.getElementById('visible-count').textContent = filtered.length;
 
   if (filtered.length === 0){
@@ -673,21 +648,29 @@ function render(){
     empty.style.display = 'block';
   } else {
     empty.style.display = 'none';
-    grid.innerHTML = filtered.map(c => {
-      const dirty = isItemDirty(c);
-      const visual = c.image
-        ? `<img src="${escapeHtml(c.image)}" alt="${escapeHtml(c.name)}" loading="lazy" referrerpolicy="no-referrer">`
+    grid.innerHTML = filtered.map(s => {
+      const dirty = isItemDirty(s);
+      const visual = s.image
+        ? `<img src="${escapeHtml(s.image)}" alt="${escapeHtml(s.name)}" loading="lazy" referrerpolicy="no-referrer">`
         : `<div class="ph">画像なし</div>`;
-      const opts = VALID_CATEGORIES.map(cat =>
-        `<option value="${cat}" ${cat === c.category ? 'selected' : ''}>${CATEGORY_LABELS[cat]}</option>`
-      ).join('');
       return `
-        <div class="card${dirty ? ' dirty' : ''}" data-id="${escapeHtml(c.id)}">
+        <div class="card${dirty ? ' dirty' : ''}" data-id="${escapeHtml(s.id)}">
           <div class="card-img" data-action="upload">${visual}</div>
           <div class="card-body">
-            <div class="card-id">${escapeHtml(c.id)}</div>
-            <input type="text" data-field="name" value="${escapeHtml(c.name)}" placeholder="衣装名" maxlength="80">
-            <select data-field="category">${opts}</select>
+            <div class="card-id">${escapeHtml(s.id)}</div>
+
+            <div class="field-label">スポット名</div>
+            <input type="text" data-field="name" value="${escapeHtml(s.name)}" placeholder="スポット名" maxlength="80">
+
+            <div class="field-label">住所</div>
+            <input type="text" data-field="address" value="${escapeHtml(s.address)}" placeholder="住所" maxlength="200">
+
+            <div class="field-label">最寄り駅</div>
+            <input type="text" data-field="station" value="${escapeHtml(s.station)}" placeholder="最寄り駅" maxlength="80">
+
+            <div class="field-label">雰囲気の説明</div>
+            <textarea data-field="description" placeholder="雰囲気の説明" maxlength="500">${escapeHtml(s.description)}</textarea>
+
             <div class="card-actions">
               <button class="btn btn-sm btn-ghost" data-action="upload">画像</button>
               <button class="btn btn-sm btn-danger" data-action="delete">削除</button>
@@ -711,26 +694,29 @@ function updateSaveBar(){
 /* ===========================================================
    編集系
    =========================================================== */
-function findCostume(id){ return costumes.find(c => c.id === id); }
+function findSpot(id){ return spots.find(s => s.id === id); }
 
 function updateField(id, field, value){
-  const c = findCostume(id);
-  if (!c) return;
-  c[field] = value;
-  render();
+  const s = findSpot(id);
+  if (!s) return;
+  s[field] = value;
+  // 全体再描画はフォーカスが飛ぶので保存バーだけ更新し、dirtyクラスのみ反映
+  const card = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
+  if (card) card.classList.toggle('dirty', isItemDirty(s));
+  updateSaveBar();
 }
 
-function deleteCostume(id){
-  const c = findCostume(id);
-  if (!c) return;
-  if (!confirm(`「${c.name}」を削除しますか？\n（保存ボタンを押すまで元に戻せます）`)) return;
-  costumes = costumes.filter(x => x.id !== id);
+function deleteSpot(id){
+  const s = findSpot(id);
+  if (!s) return;
+  if (!confirm(`「${s.name || '無題のスポット'}」を削除しますか？\n（保存ボタンを押すまで元に戻せます）`)) return;
+  spots = spots.filter(x => x.id !== id);
   render();
 }
 
 function discardChanges(){
   if (!confirm('未保存の変更をすべて破棄しますか？')) return;
-  costumes = deepClone(originalCostumes);
+  spots = deepClone(originalSpots);
   document.getElementById('save-msg').textContent = '';
   render();
 }
@@ -738,22 +724,22 @@ function discardChanges(){
 /* ===========================================================
    画像アップロード（Cloudinary Unsigned）
    =========================================================== */
-function ensureCloudinaryWidget(targetId){
-  if (!CLOUDINARY_CLOUD_NAME || CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'){
-    showToast('Cloudinary 設定が未完了です（admin/costumes.html を編集）', 'error');
-    return null;
+function uploadImage(targetId){
+  if (CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'){
+    showToast('Cloudinary 設定が未完了です（admin/spots.html を編集）', 'error');
+    return;
   }
   if (typeof cloudinary === 'undefined'){
     showToast('Cloudinary ライブラリの読み込みに失敗しました', 'error');
-    return null;
+    return;
   }
-  return cloudinary.createUploadWidget({
+  const widget = cloudinary.createUploadWidget({
     cloudName: CLOUDINARY_CLOUD_NAME,
     uploadPreset: CLOUDINARY_UPLOAD_PRESET,
-    folder: 'miyo/costumes',
+    folder: 'miyo/spots',
     sources: ['local', 'camera', 'url'],
     multiple: false,
-    maxFileSize: 10_000_000,
+    maxFileSize: 15_000_000,
     cropping: false,
     showAdvancedOptions: false,
     showPoweredBy: false,
@@ -768,19 +754,16 @@ function ensureCloudinaryWidget(targetId){
       const baseUrl = result.info.secure_url;
       const optimized = /\/upload\/(f_auto|q_auto|w_)/.test(baseUrl)
         ? baseUrl
-        : baseUrl.replace('/upload/', '/upload/f_auto,q_auto,w_800/');
-      const c = findCostume(targetId);
-      if (c){
-        c.image = optimized;
+        : baseUrl.replace('/upload/', '/upload/f_auto,q_auto,w_1200/');
+      const s = findSpot(targetId);
+      if (s){
+        s.image = optimized;
         render();
         showToast('画像をアップロードしました');
       }
     }
   });
-}
-function uploadImage(id){
-  const widget = ensureCloudinaryWidget(id);
-  if (widget) widget.open();
+  widget.open();
 }
 
 /* ===========================================================
@@ -788,7 +771,9 @@ function uploadImage(id){
    =========================================================== */
 function openAddModal(){
   document.getElementById('new-name').value = '';
-  document.getElementById('new-category').value = activeCategory === 'all' ? 'kimono' : activeCategory;
+  document.getElementById('new-address').value = '';
+  document.getElementById('new-station').value = '';
+  document.getElementById('new-description').value = '';
   document.getElementById('add-modal').classList.add('open');
   setTimeout(() => document.getElementById('new-name').focus(), 50);
 }
@@ -796,11 +781,20 @@ function closeAddModal(){
   document.getElementById('add-modal').classList.remove('open');
 }
 function confirmAdd(){
-  const name = document.getElementById('new-name').value.trim();
-  const category = document.getElementById('new-category').value;
-  if (!name){ alert('衣装名を入力してください'); return; }
-  if (!VALID_CATEGORIES.includes(category)){ alert('カテゴリが不正です'); return; }
-  costumes.push({ id: makeId(category), name, category, image: '' });
+  const name        = document.getElementById('new-name').value.trim();
+  const address     = document.getElementById('new-address').value.trim();
+  const station     = document.getElementById('new-station').value.trim();
+  const description = document.getElementById('new-description').value.trim();
+  if (!name){ alert('スポット名を入力してください'); return; }
+  spots.push({
+    id: makeId(),
+    name,
+    address,
+    station,
+    image: '',
+    description,
+    order: spots.length
+  });
   closeAddModal();
   render();
   showToast(`「${name}」を追加しました（保存ボタンで反映）`);
@@ -817,11 +811,14 @@ async function saveAll(){
   msg.classList.remove('error');
   msg.textContent = '';
 
+  // order をカード並び順で振り直す
+  spots.forEach((s, i) => { s.order = i; });
+
   try {
-    const res = await fetch('/api/costumes', {
+    const res = await fetch('/api/spots', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password, costumes })
+      body: JSON.stringify({ password, spots })
     });
     if (res.status === 401){
       msg.classList.add('error');
@@ -835,11 +832,11 @@ async function saveAll(){
       throw new Error(body.error || `HTTP ${res.status}`);
     }
     const data = await res.json();
-    if (Array.isArray(data.costumes)){
-      costumes = deepClone(data.costumes);
-      originalCostumes = deepClone(data.costumes);
+    if (Array.isArray(data.spots)){
+      spots = deepClone(data.spots);
+      originalSpots = deepClone(data.spots);
     } else {
-      originalCostumes = deepClone(costumes);
+      originalSpots = deepClone(spots);
     }
     render();
     showToast('保存しました ✓');
@@ -862,14 +859,6 @@ document.getElementById('password-input').addEventListener('keydown', e => {
 });
 document.getElementById('logout-btn').addEventListener('click', logout);
 
-document.getElementById('filter-tabs').addEventListener('click', e => {
-  const btn = e.target.closest('button');
-  if (!btn) return;
-  document.querySelectorAll('#filter-tabs button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeCategory = btn.dataset.cat;
-  render();
-});
 document.getElementById('search-input').addEventListener('input', e => {
   searchKeyword = e.target.value.trim();
   render();
@@ -893,9 +882,9 @@ document.getElementById('grid').addEventListener('click', e => {
   const id = card.dataset.id;
   const action = e.target.closest('[data-action]')?.dataset.action;
   if (action === 'upload') uploadImage(id);
-  else if (action === 'delete') deleteCostume(id);
+  else if (action === 'delete') deleteSpot(id);
 });
-document.getElementById('grid').addEventListener('change', e => {
+document.getElementById('grid').addEventListener('input', e => {
   const card = e.target.closest('.card');
   if (!card) return;
   const id = card.dataset.id;

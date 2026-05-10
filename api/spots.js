@@ -1,15 +1,13 @@
 import { kv } from '@vercel/kv';
 
 const KV_KEY = 'miyo:spots';
-const SPOTS_COUNT = 5;
-
-const DEFAULT_SPOTS = [
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' }
-];
+const MAX_ITEMS  = 50;
+const ID_MAX     = 80;
+const NAME_MAX   = 80;
+const ADDR_MAX   = 200;
+const STATION_MAX= 80;
+const DESC_MAX   = 500;
+const URL_MAX    = 500;
 
 function isSafeUrl(u) {
   if (!u) return true;
@@ -22,19 +20,60 @@ function isSafeUrl(u) {
 }
 
 function normalize(input) {
+  if (!Array.isArray(input)) {
+    const err = new Error('spots must be an array');
+    err.code = 'INVALID_FORMAT';
+    throw err;
+  }
+  if (input.length > MAX_ITEMS) {
+    const err = new Error('too many items');
+    err.code = 'TOO_MANY';
+    throw err;
+  }
+
   const out = [];
-  for (let i = 0; i < SPOTS_COUNT; i++) {
-    const s = (Array.isArray(input) && input[i]) || {};
-    const name  = typeof s.name  === 'string' ? s.name.trim().slice(0, 80)  : '';
-    const url   = typeof s.url   === 'string' ? s.url.trim().slice(0, 500)  : '';
-    const image = typeof s.image === 'string' ? s.image.trim().slice(0, 500) : '';
-    if (!isSafeUrl(url) || !isSafeUrl(image)) {
-      const err = new Error('invalid url');
+  const seenIds = new Set();
+  input.forEach((s, i) => {
+    if (!s || typeof s !== 'object') {
+      const err = new Error('invalid item');
+      err.code = 'INVALID_ITEM';
+      throw err;
+    }
+    const id          = typeof s.id          === 'string' ? s.id.trim().slice(0, ID_MAX)             : '';
+    const name        = typeof s.name        === 'string' ? s.name.trim().slice(0, NAME_MAX)         : '';
+    const address     = typeof s.address     === 'string' ? s.address.trim().slice(0, ADDR_MAX)      : '';
+    const station     = typeof s.station     === 'string' ? s.station.trim().slice(0, STATION_MAX)   : '';
+    const image       = typeof s.image       === 'string' ? s.image.trim().slice(0, URL_MAX)         : '';
+    const description = typeof s.description === 'string' ? s.description.trim().slice(0, DESC_MAX)  : '';
+    const order       = Number.isFinite(s.order) ? Math.floor(s.order) : i;
+
+    if (!id) {
+      const err = new Error('id required');
+      err.code = 'INVALID_ID';
+      throw err;
+    }
+    if (seenIds.has(id)) {
+      const err = new Error('duplicate id');
+      err.code = 'DUPLICATE_ID';
+      throw err;
+    }
+    seenIds.add(id);
+
+    if (!name) {
+      const err = new Error('name required');
+      err.code = 'INVALID_NAME';
+      throw err;
+    }
+    if (!isSafeUrl(image)) {
+      const err = new Error('invalid image url');
       err.code = 'INVALID_URL';
       throw err;
     }
-    out.push({ name, url, image });
-  }
+
+    out.push({ id, name, address, station, image, description, order });
+  });
+
+  out.sort((a, b) => a.order - b.order);
   return out;
 }
 
@@ -44,14 +83,16 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const raw = await kv.get(KV_KEY);
-      const spots = normalize(raw || DEFAULT_SPOTS);
+      const spots = Array.isArray(raw)
+        ? raw.filter(s => s && typeof s === 'object' && typeof s.id === 'string' && typeof s.name === 'string')
+        : [];
       return res.status(200).json({ spots });
     } catch (e) {
-      return res.status(200).json({ spots: DEFAULT_SPOTS });
+      return res.status(200).json({ spots: [] });
     }
   }
 
-  if (req.method === 'POST') {
+  if (req.method === 'PUT') {
     const expected = process.env.MIYO_EDIT_PASSWORD;
     if (!expected) {
       return res.status(500).json({ error: 'password not configured' });
@@ -74,7 +115,7 @@ export default async function handler(req, res) {
     try {
       normalized = normalize(spots);
     } catch (e) {
-      return res.status(400).json({ error: e.code || 'invalid spots' });
+      return res.status(400).json({ error: e.code || 'invalid spots', message: e.message });
     }
 
     try {
@@ -83,9 +124,9 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'storage error' });
     }
 
-    return res.status(200).json({ ok: true, spots: normalized });
+    return res.status(200).json({ ok: true, count: normalized.length, spots: normalized });
   }
 
-  res.setHeader('Allow', 'GET, POST');
+  res.setHeader('Allow', 'GET, PUT');
   return res.status(405).json({ error: 'method not allowed' });
 }

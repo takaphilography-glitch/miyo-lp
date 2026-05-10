@@ -59,7 +59,38 @@
     font-size: 13px;
     color: var(--sumi-soft);
     display: flex; gap: 10px; align-items: center;
+    flex-wrap: wrap;
   }
+
+  /* ナビ */
+  .admin-nav{
+    display: flex; gap: 4px; flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .admin-nav a{
+    display: inline-flex; align-items: center;
+    padding: 8px 16px;
+    background: var(--bg-paper);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    text-decoration: none;
+    color: var(--sumi-soft);
+    font-size: 13px;
+    letter-spacing: .1em;
+    font-family: var(--sans);
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .admin-nav a:hover{
+    background: var(--bg);
+    color: var(--sumi);
+    border-color: var(--sumi-soft);
+  }
+  .admin-nav a.active{
+    background: var(--sumi);
+    color: var(--bg-paper);
+    border-color: var(--sumi);
+  }
+  .admin-nav a.active::before{ content: '❀ '; color: var(--sakura); }
 
   /* ボタン共通 */
   .btn{
@@ -293,10 +324,15 @@
 
 <!-- 管理画面 -->
 <div id="admin-screen" class="container" style="display:none;">
+  <nav class="admin-nav">
+    <a href="/admin/costumes.html">衣装管理</a>
+    <a href="/admin/spots.html">撮影スポット</a>
+    <a href="/admin/site-images.html" class="active">サイト画像</a>
+  </nav>
+
   <header class="app-head">
     <h1>サイト画像管理</h1>
     <div class="meta">
-      <a href="/admin/costumes.html" style="color:var(--sumi-soft); text-decoration:underline;">衣装管理へ</a>
       <button class="btn btn-ghost btn-sm" id="logout-btn">ログアウト</button>
     </div>
   </header>
@@ -347,8 +383,8 @@
 /* ============================================================
    ★ Cloudinary 設定（admin/costumes.html と同じ値で揃える）★
    ============================================================ */
-const CLOUDINARY_CLOUD_NAME    = 'YOUR_CLOUD_NAME';
-const CLOUDINARY_UPLOAD_PRESET = 'miyo_costumes';
+const CLOUDINARY_CLOUD_NAME    = 'dkjvy01pi';
+const CLOUDINARY_UPLOAD_PRESET = 'miyo_uploads';
 
 const SLOTS = ['hero', 'profile'];
 const SLOT_TRANSFORMS = {
@@ -502,7 +538,7 @@ function updateSaveBar(){
    画像アップロード
    =========================================================== */
 function uploadImage(slot){
-  if (CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'){
+  if (!CLOUDINARY_CLOUD_NAME || CLOUDINARY_CLOUD_NAME === 'YOUR_CLOUD_NAME'){
     showToast('Cloudinary 設定が未完了です（admin/site-images.html を編集）', 'error');
     return;
   }

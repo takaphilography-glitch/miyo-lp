@@ -994,7 +994,7 @@
     padding: 18px 20px 20px;
     flex:1;
     display:flex; flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
   .spot-card .name{
     font-family: var(--serif);
@@ -1004,187 +1004,46 @@
     color: var(--sumi);
     line-height: 1.5;
   }
-  .spot-card .link{
-    margin-top:auto;
-    display:inline-flex; align-items:center; gap:6px;
+  .spot-card .meta{
+    display:flex; flex-direction: column;
+    gap: 4px;
     font-size: 12px;
-    color: var(--sakura-deep);
-    border-bottom: 1px solid var(--sakura);
-    align-self: flex-start;
-    padding-bottom: 2px;
-    letter-spacing: .1em;
-    transition: color .25s, border-color .25s;
+    color: var(--sumi-soft);
+    letter-spacing: .03em;
+    line-height: 1.6;
   }
-  .spot-card .link:hover{ color: var(--rose); border-color: var(--rose); }
-  .spot-card .link svg{ width: 11px; height: 11px; fill: currentColor; }
+  .spot-card .meta .row{
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .spot-card .meta .ico{
+    flex: 0 0 auto;
+    color: var(--gold);
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+  .spot-card .description{
+    font-size: 13px;
+    color: var(--sumi);
+    line-height: 1.8;
+    letter-spacing: .03em;
+    margin-top: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
   .spot-card.empty{
     background: repeating-linear-gradient(45deg, var(--bg-paper) 0 12px, var(--bg) 12px 24px);
     border-style: dashed;
   }
   .spot-card.empty .body{ opacity:.55; }
-
-  .spots-edit-trigger{
+  .spots-empty-state{
+    grid-column: 1 / -1;
     text-align:center;
-    margin-top: 20px;
-  }
-  .spots-edit-trigger button{
-    font-size: 11px;
-    letter-spacing: .25em;
     color: var(--sumi-soft);
-    border: 1px solid var(--line);
-    padding: 8px 18px;
-    border-radius: 999px;
-    background: transparent;
-    transition: all .3s;
-  }
-  .spots-edit-trigger button:hover{
-    color: var(--sakura-deep);
-    border-color: var(--sakura);
-    background: var(--bg-paper);
-  }
-  .spots-edit-trigger .ico{ margin-right: 4px; }
-
-  /* スポット編集モーダル */
-  .spots-modal{
-    position: fixed; inset:0; z-index: 200;
-    display:none;
-    align-items: center; justify-content: center;
-    background: rgba(43,38,37,.55);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    padding: 20px;
-  }
-  .spots-modal.open{ display:flex; }
-  .spots-modal .panel{
-    background: var(--bg-paper);
-    border-radius: 6px;
-    width: min(720px, 100%);
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: clamp(24px, 3.5vw, 40px);
-    box-shadow: 0 30px 60px rgba(0,0,0,.25);
-    position: relative;
-  }
-  .spots-modal .head{
-    display:flex; align-items: baseline; justify-content: space-between;
-    margin-bottom: 22px;
-    gap: 16px;
-  }
-  .spots-modal .head h3{
-    font-family: var(--serif);
-    font-size: clamp(18px, 2.2vw, 22px);
-    letter-spacing: .15em;
-    color: var(--sumi);
-  }
-  .spots-modal .head .close{
-    font-size: 22px; line-height: 1;
-    color: var(--sumi-soft);
-    padding: 4px 8px;
-  }
-  .spots-modal .head .close:hover{ color: var(--sumi); }
-
-  .spots-modal .auth{
-    display:flex; flex-direction: column; gap: 14px;
-    padding: 30px 0 6px;
-  }
-  .spots-modal .auth label{
-    font-size: 12px;
-    color: var(--sumi-soft);
-    letter-spacing: .15em;
-  }
-  .spots-modal .auth input,
-  .spots-modal .editor input{
-    width:100%;
-    padding: 11px 14px;
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--sumi);
-    background: var(--bg);
-    transition: border-color .25s, box-shadow .25s;
-  }
-  .spots-modal .auth input:focus,
-  .spots-modal .editor input:focus{
-    outline: none;
-    border-color: var(--sakura-deep);
-    box-shadow: 0 0 0 3px rgba(232,180,184,.25);
-  }
-  .spots-modal .auth-error,
-  .spots-modal .save-msg{
-    font-size: 12px;
-    min-height: 18px;
+    font-size: 13px;
+    padding: 60px 0;
     letter-spacing: .1em;
   }
-  .spots-modal .auth-error{ color: var(--rose); }
-  .spots-modal .save-msg{ color: var(--leaf); }
-  .spots-modal .save-msg.error{ color: var(--rose); }
-
-  .spots-modal .editor{ display:none; }
-  .spots-modal.authed .auth{ display:none; }
-  .spots-modal.authed .editor{ display:block; }
-
-  .spot-edit-row{
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 16px 18px;
-    margin-bottom: 14px;
-    background: var(--bg);
-  }
-  .spot-edit-row .row-head{
-    font-family: var(--serif);
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: .2em;
-    margin-bottom: 12px;
-  }
-  .spot-edit-row .field{
-    display:flex; flex-direction: column;
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-  .spot-edit-row .field label{
-    font-size: 11px;
-    color: var(--sumi-soft);
-    letter-spacing: .12em;
-  }
-  .spot-edit-row .preview-img{
-    width: 80px; height: 60px;
-    border-radius: 3px;
-    background: var(--bg-deep);
-    background-size: cover;
-    background-position: center;
-    margin-top: 6px;
-    border: 1px solid var(--line);
-  }
-
-  .spots-modal .actions{
-    display:flex; gap: 10px;
-    justify-content: flex-end;
-    margin-top: 20px;
-  }
-  .spots-modal .actions button{
-    padding: 11px 22px;
-    border-radius: 3px;
-    font-size: 13px;
-    letter-spacing: .15em;
-    font-family: var(--serif);
-    transition: all .3s;
-  }
-  .spots-modal .actions .save{
-    background: var(--sumi);
-    color: var(--bg-paper);
-  }
-  .spots-modal .actions .save:hover{ background: var(--sakura-deep); }
-  .spots-modal .actions .save:disabled{
-    background: var(--line); color: var(--sumi-soft); cursor: not-allowed;
-  }
-  .spots-modal .actions .cancel{
-    background: transparent;
-    color: var(--sumi-soft);
-    border: 1px solid var(--line);
-  }
-  .spots-modal .actions .cancel:hover{ color: var(--sumi); border-color: var(--sumi); }
 
 </style>
 </head>
@@ -1397,12 +1256,6 @@
     <div class="spots-grid" id="spots-grid">
       <!-- JSで描画 -->
       <div class="spots-loading">読み込み中…</div>
-    </div>
-
-    <div class="spots-edit-trigger">
-      <button type="button" id="spots-edit-open" aria-label="管理者用：スポットを編集">
-        <span class="ico">✎</span> miyoさん専用：スポットを編集
-      </button>
     </div>
   </div>
 </section>
@@ -1648,42 +1501,6 @@
     <p class="copy">© miyo. All rights reserved.</p>
   </div>
 </footer>
-
-
-<!-- ============================================================
-     スポット編集モーダル（管理者用）
-     ============================================================ -->
-<div class="spots-modal" id="spots-modal" role="dialog" aria-modal="true" aria-labelledby="spots-modal-title">
-  <div class="panel">
-    <div class="head">
-      <h3 id="spots-modal-title">スポットを編集</h3>
-      <button type="button" class="close" id="spots-modal-close" aria-label="閉じる">×</button>
-    </div>
-
-    <div class="auth">
-      <label for="spots-pw">編集パスワード</label>
-      <input type="password" id="spots-pw" placeholder="パスワードを入力" autocomplete="current-password">
-      <div class="auth-error" id="spots-auth-error"></div>
-      <div class="actions">
-        <button type="button" class="cancel" id="spots-auth-cancel">キャンセル</button>
-        <button type="button" class="save" id="spots-auth-submit">ログイン</button>
-      </div>
-    </div>
-
-    <div class="editor">
-      <p style="font-size:12px; color:var(--sumi-soft); line-height:1.8; margin-bottom: 18px;">
-        各スポットの「場所の名前」「リンクURL」「写真URL」を入力してください。<br>
-        空欄のままでも保存できます（その項目は非表示になります）。
-      </p>
-      <div id="spots-editor-rows"></div>
-      <div class="save-msg" id="spots-save-msg"></div>
-      <div class="actions">
-        <button type="button" class="cancel" id="spots-edit-cancel">閉じる</button>
-        <button type="button" class="save" id="spots-edit-save">保存する</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <script>
@@ -2105,35 +1922,13 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 
 /* ===========================================================
-   気になるスポット
+   気になるスポット（読み取り専用表示／編集は /admin/spots.html）
    =========================================================== */
-const SPOTS_COUNT = 5;
-const SPOTS_DEFAULT = [
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' },
-  { name: '', url: '', image: '' }
-];
-let currentSpots = SPOTS_DEFAULT.slice();
-let spotsAuthToken = '';
+let currentSpots = [];
 
 const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[c]));
-
-function normalizeSpots(arr){
-  const out = [];
-  for (let i = 0; i < SPOTS_COUNT; i++){
-    const s = (arr && arr[i]) || {};
-    out.push({
-      name:  String(s.name  ?? '').slice(0, 80),
-      url:   String(s.url   ?? '').slice(0, 500),
-      image: String(s.image ?? '').slice(0, 500)
-    });
-  }
-  return out;
-}
 
 function isSafeUrl(u){
   if (!u) return false;
@@ -2148,9 +1943,9 @@ async function loadSpots(){
     const res = await fetch('/api/spots', { cache: 'no-store' });
     if (!res.ok) throw new Error('fetch failed');
     const data = await res.json();
-    currentSpots = normalizeSpots(data.spots);
+    currentSpots = Array.isArray(data.spots) ? data.spots : [];
   } catch (e) {
-    currentSpots = SPOTS_DEFAULT.slice();
+    currentSpots = [];
   }
   renderSpots();
 }
@@ -2158,150 +1953,46 @@ async function loadSpots(){
 function renderSpots(){
   const grid = document.getElementById('spots-grid');
   if (!grid) return;
+
+  if (currentSpots.length === 0){
+    grid.innerHTML = '<div class="spots-empty-state">スポットはまだ登録されていません</div>';
+    return;
+  }
+
   grid.innerHTML = '';
-  currentSpots.forEach((spot, idx) => {
+  currentSpots.forEach((spot) => {
     const card = document.createElement('div');
-    const empty = !spot.name && !spot.url && !spot.image;
-    card.className = 'spot-card' + (empty ? ' empty' : '');
+    card.className = 'spot-card';
 
     const photoHtml = isSafeUrl(spot.image)
       ? `<img src="${escapeHtml(spot.image)}" alt="${escapeHtml(spot.name || 'spot')}" loading="lazy" referrerpolicy="no-referrer">`
-      : `<div class="ph">${String(idx + 1).padStart(2,'0')}</div>`;
+      : `<div class="ph">❀</div>`;
 
-    const linkHtml = isSafeUrl(spot.url)
-      ? `<a class="link" href="${escapeHtml(spot.url)}" target="_blank" rel="noopener noreferrer">
-           詳しく見る
-           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
-         </a>`
+    const stationHtml = spot.station
+      ? `<div class="row"><span class="ico">🚉</span><span>${escapeHtml(spot.station)}</span></div>`
+      : '';
+    const addressHtml = spot.address
+      ? `<div class="row"><span class="ico">📍</span><span>${escapeHtml(spot.address)}</span></div>`
+      : '';
+    const metaHtml = (stationHtml || addressHtml)
+      ? `<div class="meta">${stationHtml}${addressHtml}</div>`
       : '';
 
-    const nameHtml = spot.name
-      ? `<div class="name">${escapeHtml(spot.name)}</div>`
-      : `<div class="name" style="color:var(--sumi-soft); opacity:.6;">未設定</div>`;
+    const descriptionHtml = spot.description
+      ? `<div class="description">${escapeHtml(spot.description)}</div>`
+      : '';
 
     card.innerHTML = `
       <div class="photo">${photoHtml}</div>
       <div class="body">
-        ${nameHtml}
-        ${linkHtml}
+        <div class="name">${escapeHtml(spot.name || '無題のスポット')}</div>
+        ${metaHtml}
+        ${descriptionHtml}
       </div>
     `;
     grid.appendChild(card);
   });
 }
-
-/* === 編集モーダル === */
-const spotsModal      = document.getElementById('spots-modal');
-const spotsPwInput    = document.getElementById('spots-pw');
-const spotsAuthError  = document.getElementById('spots-auth-error');
-const spotsEditorRows = document.getElementById('spots-editor-rows');
-const spotsSaveMsg    = document.getElementById('spots-save-msg');
-const spotsSaveBtn    = document.getElementById('spots-edit-save');
-
-function openSpotsModal(){
-  spotsModal.classList.add('open');
-  spotsModal.classList.remove('authed');
-  spotsAuthError.textContent = '';
-  spotsSaveMsg.textContent = '';
-  spotsPwInput.value = '';
-  setTimeout(() => spotsPwInput.focus(), 50);
-}
-function closeSpotsModal(){
-  spotsModal.classList.remove('open', 'authed');
-  spotsAuthToken = '';
-}
-
-function renderEditorRows(){
-  spotsEditorRows.innerHTML = '';
-  currentSpots.forEach((spot, idx) => {
-    const row = document.createElement('div');
-    row.className = 'spot-edit-row';
-    row.innerHTML = `
-      <div class="row-head">SPOT ${String(idx + 1).padStart(2,'0')}</div>
-      <div class="field">
-        <label>場所の名前</label>
-        <input type="text" data-idx="${idx}" data-key="name" value="${escapeHtml(spot.name)}" maxlength="80" placeholder="例：京都・嵐山 竹林の小径">
-      </div>
-      <div class="field">
-        <label>リンクURL（Google Maps、公式サイトなど）</label>
-        <input type="url" data-idx="${idx}" data-key="url" value="${escapeHtml(spot.url)}" maxlength="500" placeholder="https://...">
-      </div>
-      <div class="field">
-        <label>写真URL</label>
-        <input type="url" data-idx="${idx}" data-key="image" value="${escapeHtml(spot.image)}" maxlength="500" placeholder="https://.../photo.jpg">
-        <div class="preview-img" data-preview="${idx}" style="background-image: url('${isSafeUrl(spot.image) ? escapeHtml(spot.image) : ''}')"></div>
-      </div>
-    `;
-    spotsEditorRows.appendChild(row);
-  });
-
-  // 入力で currentSpots を更新 + 画像プレビュー
-  spotsEditorRows.querySelectorAll('input').forEach(input => {
-    input.addEventListener('input', (e) => {
-      const idx = Number(e.target.dataset.idx);
-      const key = e.target.dataset.key;
-      currentSpots[idx][key] = e.target.value;
-      if (key === 'image') {
-        const prev = spotsEditorRows.querySelector(`[data-preview="${idx}"]`);
-        if (prev) prev.style.backgroundImage = isSafeUrl(e.target.value)
-          ? `url('${e.target.value.replace(/'/g, "\\'")}')` : '';
-      }
-    });
-  });
-}
-
-async function submitSpotsPassword(){
-  const pw = spotsPwInput.value.trim();
-  spotsAuthError.textContent = '';
-  if (!pw) { spotsAuthError.textContent = 'パスワードを入力してください'; return; }
-  // パスワードはまだ送らず、保存時に送信する形にする（不要な往復を減らす）
-  spotsAuthToken = pw;
-  spotsModal.classList.add('authed');
-  renderEditorRows();
-}
-
-async function saveSpots(){
-  spotsSaveBtn.disabled = true;
-  spotsSaveMsg.classList.remove('error');
-  spotsSaveMsg.textContent = '保存中…';
-  try {
-    const res = await fetch('/api/spots', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: spotsAuthToken, spots: currentSpots })
-    });
-    if (res.status === 401) {
-      spotsSaveMsg.classList.add('error');
-      spotsSaveMsg.textContent = 'パスワードが違います';
-      spotsModal.classList.remove('authed');
-      spotsAuthError.textContent = 'パスワードが違います';
-      return;
-    }
-    if (!res.ok) throw new Error('save failed');
-    const data = await res.json();
-    currentSpots = normalizeSpots(data.spots);
-    renderSpots();
-    spotsSaveMsg.textContent = '保存しました ✓';
-    setTimeout(() => { closeSpotsModal(); }, 800);
-  } catch (e) {
-    spotsSaveMsg.classList.add('error');
-    spotsSaveMsg.textContent = '保存に失敗しました。時間を置いてお試しください。';
-  } finally {
-    spotsSaveBtn.disabled = false;
-  }
-}
-
-document.getElementById('spots-edit-open').addEventListener('click', openSpotsModal);
-document.getElementById('spots-modal-close').addEventListener('click', closeSpotsModal);
-document.getElementById('spots-auth-cancel').addEventListener('click', closeSpotsModal);
-document.getElementById('spots-edit-cancel').addEventListener('click', closeSpotsModal);
-document.getElementById('spots-auth-submit').addEventListener('click', submitSpotsPassword);
-spotsPwInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitSpotsPassword(); });
-spotsSaveBtn.addEventListener('click', saveSpots);
-spotsModal.addEventListener('click', (e) => { if (e.target === spotsModal) closeSpotsModal(); });
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && spotsModal.classList.contains('open')) closeSpotsModal();
-});
 
 
 /* ===========================================================
