@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 /**
  * 一時診断エンドポイント — admin ログイン不調の切り分け用。
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
   let kvReachable = false;
   let kvError = null;
   try {
+    const kv = Redis.fromEnv();
     await kv.get('miyo:_debug_ping');
     kvReachable = true;
   } catch (e) {
@@ -32,6 +33,10 @@ export default async function handler(req, res) {
     hasLeadingOrTrailingWhitespace: raw.length !== trimmed.length,
     kvReachable,
     kvError,
+    upstashUrlSet:   !!process.env.UPSTASH_REDIS_REST_URL,
+    upstashTokenSet: !!process.env.UPSTASH_REDIS_REST_TOKEN,
+    legacyKvUrlSet:   !!process.env.KV_REST_API_URL,
+    legacyKvTokenSet: !!process.env.KV_REST_API_TOKEN,
     vercelEnv: process.env.VERCEL_ENV || 'unknown',
     nodeEnv: process.env.NODE_ENV || 'unknown',
     note: 'temporary diagnostic endpoint — delete api/debug.js after troubleshooting'

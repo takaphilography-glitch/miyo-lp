@@ -1,4 +1,5 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
+const kv = Redis.fromEnv();
 
 const KV_KEY = 'miyo:site-images';
 const URL_MAX = 500;

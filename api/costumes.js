@@ -1,4 +1,5 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
+const kv = Redis.fromEnv();
 
 const KV_KEY = 'miyo:costumes';
 const VALID_CATEGORIES = ['kimono', 'cosplay', 'dress', 'casual', 'other'];
